@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Offers" />
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Notifications" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Log Out" />
+            </group>
+
+    <item android:title="Features">
+        <menu>
+            <item
+                android:id="@+id/nav_services"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Services for you" />
+            <item
+                android:id="@+id/nav_shop_store"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Shop Stores" />
+            <item
+                android:id="@+id/nav_professional"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Professionals" />
+        </menu>
+    </item>
+
+</menu>

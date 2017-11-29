@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.pooja.myappdemonew.view.HomeFragment">
+
+    <FrameLayout
+        android:id="@+id/keycontain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff"
+        android:visibility="visible">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpPager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/keycontain"
+        android:orientation="vertical">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tl_10"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#222831"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            tl:tl_indicator_color="#393E46"
+            tl:tl_indicator_corner_radius="5dp"
+            tl:tl_indicator_margin_left="2dp"
+            tl:tl_indicator_margin_right="2dp"
+            tl:tl_indicator_style="BLOCK"
+            tl:tl_textSelectColor="@color/white"
+            tl:tl_indicator_anim_enable="true"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/flyco_tab_vp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</RelativeLayout>
