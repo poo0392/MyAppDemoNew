@@ -10,4 +10,6 @@
     <string name="hint_password">Password</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_skip">Skip</string>
+
+    <string name="default_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
 </resources>

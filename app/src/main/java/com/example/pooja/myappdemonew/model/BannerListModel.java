@@ -1,6 +1,6 @@
 package com.example.pooja.myappdemonew.model;
 
-import android.support.v4.view.ViewPager;
+import android.graphics.drawable.Drawable;
 
 /**
  * Created by Zafar.Hussain on 28/11/2017.
@@ -8,20 +8,20 @@ import android.support.v4.view.ViewPager;
 
 public class BannerListModel {
 
-    public int photo;
+    public Drawable photo;
     public String name;
-    public ViewPager mPager;
+    public String content;
 
-    public BannerListModel(int photo, String name) {
+    public BannerListModel(Drawable photo, String content) {
         this.photo = photo;
-        this.name = name;
+        this.content = content;
     }
 
-    public int getPhoto() {
+    public Drawable getPhoto() {
         return photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(Drawable photo) {
         this.photo = photo;
     }
 
@@ -32,4 +32,14 @@ public class BannerListModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+
 }
