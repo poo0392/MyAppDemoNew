@@ -1,20 +1,25 @@
 package com.example.pooja.myappdemonew.view;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
@@ -28,6 +33,8 @@ public class HomeActivity extends AppCompatActivity
     private ImageView iv_profile, iv_offers, iv_notification, iv_home;
     private TextView txt_home, txt_profile, txt_notification, txt_offers;
     private SearchView simpleSearchView;
+    private RelativeLayout search_layout;
+    private Menu myMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,27 +59,28 @@ public class HomeActivity extends AppCompatActivity
         ll_offers.setOnClickListener(this);
 
         // perform set on query text listener event
-        simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+       /* simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-            // do something on text submit
+                // do something on text submit
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-            // do something when text changes
+                // do something when text changes
                 return false;
             }
-        });
+        });*/
     }
 
     private void attachViews() {
         // Session manager
         session = new SessionManager(getApplicationContext());
 
-        simpleSearchView = (SearchView) findViewById(R.id.search_view); // inititate a search view
-        CharSequence query = simpleSearchView.getQuery();
+        //  simpleSearchView = (SearchView) findViewById(R.id.search_view); // inititate a search view
+        // search_layout = (RelativeLayout) findViewById(R.id.search_layout);
+        //   CharSequence query = simpleSearchView.getQuery();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -118,12 +126,44 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        myMenu=menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView =
+                (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        //searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // searchView.setIconified(true);
+                if (menu != null) {
+                    menu.findItem(R.id.action_notificattion).setVisible(false);
+                    menu.findItem(R.id.action_profile).setVisible(false);
+                }
+            }
+        });
+        // Detect SearchView close
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                if (menu != null) {
+                    menu.findItem(R.id.action_notificattion).setVisible(true);
+                    menu.findItem(R.id.action_profile).setVisible(true);
+                }
+                return false;
+            }
+        });
         return true;
+
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -133,12 +173,17 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_notificattion) {
+            return true;
+        } else if (id == R.id.action_profile) {
+            return true;
+        } else if (id == R.id.action_search) {
+            // search_layout.setVisibility(View.VISIBLE);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

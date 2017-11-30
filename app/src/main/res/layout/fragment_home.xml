@@ -14,18 +14,11 @@
         android:background="#ffffff"
         android:visibility="visible">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vpPager"
+        <com.tmall.ultraviewpager.UltraViewPager
+            android:id="@+id/ultra_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
-
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:padding="5dp" />
+            android:layout_height="150dp"
+            android:background="@android:color/darker_gray" />
     </FrameLayout>
 
     <LinearLayout
@@ -35,19 +28,15 @@
         android:orientation="vertical">
 
         <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/tl_10"
+            android:id="@+id/tl_4"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#222831"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            tl:tl_indicator_color="#393E46"
-            tl:tl_indicator_corner_radius="5dp"
+            android:background="@color/black"
+            android:layout_marginTop="20dp"
             tl:tl_indicator_margin_left="2dp"
             tl:tl_indicator_margin_right="2dp"
-            tl:tl_indicator_style="BLOCK"
-            tl:tl_textSelectColor="@color/white"
-            tl:tl_indicator_anim_enable="true"/>
+            tl:tl_tab_padding="5dp"
+            tl:tl_textsize="15sp"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/flyco_tab_vp"

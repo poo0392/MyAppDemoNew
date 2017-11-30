@@ -1,5 +1,6 @@
 package com.example.pooja.myappdemonew.adapter;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,25 @@ import android.widget.LinearLayout;
 
 import com.example.pooja.myappdemonew.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Zafar.Hussain on 28/11/2017.
  */
 
 public class UltraPagerAdapter extends PagerAdapter {
+    private Context mContext;
+    private String from;
+    private ArrayList<Integer> mList;
     private boolean isMultiScr;
     private int[] image = {R.drawable.mall, R.drawable.building, R.drawable.garden};
+    private int[] imageTwo = {R.drawable.img_offers_one, R.drawable.img_offers_two, R.drawable.img_offers_one, R.drawable.img_offers_two};
+
+    public UltraPagerAdapter(Context mContext, String from,boolean isMultiScr) {
+        this.isMultiScr = isMultiScr;
+        this.mContext = mContext;
+        this.from = from;
+    }
 
     public UltraPagerAdapter(boolean isMultiScr) {
         this.isMultiScr = isMultiScr;
@@ -23,7 +36,11 @@ public class UltraPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return image.length;
+        if(from.equals("home")) {
+            return imageTwo.length;
+        }else{
+            return image.length;
+        }
     }
 
     @Override
@@ -57,8 +74,11 @@ public class UltraPagerAdapter extends PagerAdapter {
         View itemView = LayoutInflater.from(container.getContext()).inflate(R.layout.swipe_layout, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-        imageView.setImageResource(image[position]);
-
+        if(from.equals("home")){
+            imageView.setImageResource(imageTwo[position]);
+        }else {
+            imageView.setImageResource(image[position]);
+        }
         container.addView(itemView);
 
         return itemView;

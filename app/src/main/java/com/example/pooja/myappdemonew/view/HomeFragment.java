@@ -1,6 +1,7 @@
 package com.example.pooja.myappdemonew.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,14 +10,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
-import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
+import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +37,10 @@ public class HomeFragment extends Fragment {
     private ViewPager vpPager;
     private CircleIndicator titleIndicator;
     private ViewPager flycoViewpager;
+    private UltraViewPager ultraViewPager;
+    private UltraPagerAdapter adapter;
 
-    private SlidingTabLayout tabLayout_10;
+    private SlidingTabLayout tabLayout;
     private final String[] mTitles = {"Services For You", "Shop-Stores", "Professions"};
     private final List<String> mFragmentTitleList = new ArrayList<>();
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -58,19 +64,19 @@ public class HomeFragment extends Fragment {
         flycoViewpager = (ViewPager) view.findViewById(R.id.flyco_tab_vp);
         setupViewPager(flycoViewpager);
 
-      //  TabLayout tb=(TabLayout) view.findViewById(R.id.tabLayout);
-      //  tb.setupWithViewPager(flycoViewpager);
+        //  TabLayout tb=(TabLayout) view.findViewById(R.id.tabLayout);
+        //  tb.setupWithViewPager(flycoViewpager);
 
-        tabLayout_10 = (SlidingTabLayout) view.findViewById(R.id.tl_10);
-        tabLayout_10.setViewPager(flycoViewpager);
-        tabLayout_10.notifyDataSetChanged();
-        //tabLayout_10.setOnClickListener();
+        tabLayout = (SlidingTabLayout) view.findViewById(R.id.tl_4);
+        tabLayout.setViewPager(flycoViewpager);
+        tabLayout.notifyDataSetChanged();
+        //tabLayout.setOnClickListener();
 
-       // tabLayout_10.setupWithViewPager(flycoViewpager);
-        tabLayout_10.setOnTabSelectListener(new OnTabSelectListener() {
+        // tabLayout.setupWithViewPager(flycoViewpager);
+        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                flycoViewpager.setCurrentItem(position);
+                //flycoViewpager.setCurrentItem(position);
             }
 
             @Override
@@ -78,7 +84,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        flycoViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        /*flycoViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -86,29 +92,29 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                tabLayout_10.setCurrentTab(position);
-               // tabLayout_10.updateTabSelection(position);
+                tabLayout.setCurrentTab(position);
+                // tabLayout.updateTabSelection(position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
+        });*/
 
     }
 
     private void setupViewPager(ViewPager flycoViewpager) {
         MyFlycoPagerAdapter mAdapter = new MyFlycoPagerAdapter(getFragmentManager());
-        mAdapter.addFragment(new ServicesFragment(),"Services For You");
-        mAdapter.addFragment(new ShopStoresFragment(),"Shop-Stores");
-        mAdapter.addFragment(new ProfessionsFragment(),"Professions");
+        mAdapter.addFragment(new ServicesFragment(), "Services For You");
+        mAdapter.addFragment(new ShopStoresFragment(), "Shop-Stores");
+        mAdapter.addFragment(new ProfessionsFragment(), "Professions");
         // mViewPager.setAdapter(mAdapter);
         flycoViewpager.setAdapter(mAdapter);
     }
 
     private void setViewPager(View view) {
-        mPagerAdapter = new MyPagerAdapter(mContext);
+     /*   mPagerAdapter = new MyPagerAdapter(mContext);
         vpPager = (ViewPager) view.findViewById(R.id.vpPager);
         vpPager.setAdapter(mPagerAdapter);
         titleIndicator = (CircleIndicator) view.findViewById(R.id.indicator);
@@ -132,7 +138,32 @@ public class HomeFragment extends Fragment {
                     view.setAlpha(0);
                 }
             }
-        });
+        });*/
+        ultraViewPager = (UltraViewPager) view.findViewById(R.id.ultra_viewpager);
+        ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        //initialize UltraPagerAdapter，and add child view to UltraViewPager
+      //  adapter = new UltraPagerAdapter(false);
+        adapter=new UltraPagerAdapter(mContext,"home",false);
+        ultraViewPager.setAdapter(adapter);
+
+        //initialize built-in indicator
+        ultraViewPager.initIndicator();
+        //set style of indicators
+        ultraViewPager.getIndicator()
+                .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
+                .setFocusColor(Color.WHITE)
+                .setNormalColor(getResources().getColor(R.color.LightGrey))
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
+        //set the alignment
+        ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+        //construct built-in indicator, and add it to  UltraViewPager
+        ultraViewPager.getIndicator().build();
+
+        //set an infinite loop
+        ultraViewPager.setInfiniteLoop(true);
+        //enable auto-scroll mode
+        ultraViewPager.setAutoScroll(2000);
+
     }
 
 
@@ -157,10 +188,11 @@ public class HomeFragment extends Fragment {
             return mFragments.get(position);
         }
 
-        public void addFragment(Fragment fragment,String title) {
+        public void addFragment(Fragment fragment, String title) {
             mFragments.add(fragment);
-             mFragmentTitleList.add(title);
+            mFragmentTitleList.add(title);
         }
+
         @Override
         public int getItemPosition(Object object) {
             return PagerAdapter.POSITION_NONE;
