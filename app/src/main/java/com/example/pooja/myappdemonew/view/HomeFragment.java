@@ -15,6 +15,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
@@ -37,9 +39,10 @@ public class HomeFragment extends Fragment {
     private ViewPager vpPager;
     private CircleIndicator titleIndicator;
     private ViewPager flycoViewpager;
-    private UltraViewPager ultraViewPager;
+    private UltraViewPager offersUtViewPager, worksUtViewPager;
     private UltraPagerAdapter adapter;
-
+    private ImageView iv_photo;
+    private TextView tv_content;
     private SlidingTabLayout tabLayout;
     private final String[] mTitles = {"Services For You", "Shop-Stores", "Professions"};
     private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -53,11 +56,30 @@ public class HomeFragment extends Fragment {
         toolbar.setTitle("Home");
         //setHasOptionsMenu(false);
         mContext = getActivity();
-        //attachViews(view);
+        attachViews(view);
         setViewPager(view);
         setFlycoViewPager(view);
+        setWorksViewPager(view);
 
         return view;
+    }
+
+    private void attachViews(View view) {
+        iv_photo=(ImageView)view.findViewById(R.id.iv_photo);
+        tv_content=(TextView)view.findViewById(R.id.tv_work_content);
+    }
+
+    private void setWorksViewPager(View view) {
+        worksUtViewPager = (UltraViewPager) view.findViewById(R.id.ultra_photo_vp);
+        worksUtViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        //initialize UltraPagerAdapter，and add child view to UltraViewPager
+        //  adapter = new UltraPagerAdapter(false);
+        adapter = new UltraPagerAdapter(mContext, "works", false);
+        worksUtViewPager.setAdapter(adapter);
+        //set an infinite loop
+        worksUtViewPager.setInfiniteLoop(true);
+        //enable auto-scroll mode
+        worksUtViewPager.setAutoScroll(2000);
     }
 
     private void setFlycoViewPager(View view) {
@@ -139,30 +161,30 @@ public class HomeFragment extends Fragment {
                 }
             }
         });*/
-        ultraViewPager = (UltraViewPager) view.findViewById(R.id.ultra_viewpager);
-        ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        offersUtViewPager = (UltraViewPager) view.findViewById(R.id.ultra_viewpager);
+        offersUtViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
-      //  adapter = new UltraPagerAdapter(false);
-        adapter=new UltraPagerAdapter(mContext,"home",false);
-        ultraViewPager.setAdapter(adapter);
+        //  adapter = new UltraPagerAdapter(false);
+        adapter = new UltraPagerAdapter(mContext, "home", false);
+        offersUtViewPager.setAdapter(adapter);
 
         //initialize built-in indicator
-        ultraViewPager.initIndicator();
+        offersUtViewPager.initIndicator();
         //set style of indicators
-        ultraViewPager.getIndicator()
+        offersUtViewPager.getIndicator()
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(Color.WHITE)
                 .setNormalColor(getResources().getColor(R.color.LightGrey))
                 .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
         //set the alignment
-        ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+        offersUtViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
         //construct built-in indicator, and add it to  UltraViewPager
-        ultraViewPager.getIndicator().build();
+        offersUtViewPager.getIndicator().build();
 
         //set an infinite loop
-        ultraViewPager.setInfiniteLoop(true);
+        offersUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        ultraViewPager.setAutoScroll(2000);
+        offersUtViewPager.setAutoScroll(2000);
 
     }
 
