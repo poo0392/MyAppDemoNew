@@ -113,6 +113,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //ActivityCompat.invalidateOptionsMenu(HomeActivity.this);
     }
 
     @Override
@@ -128,41 +129,38 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        myMenu=menu;
+        myMenu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView =
                 (SearchView) MenuItemCompat.getActionView(searchItem);
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        //searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
+        if (searchItem != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener()
+        {
             @Override
-            public void onClick(View v) {
-               // searchView.setIconified(true);
-                if (menu != null) {
+            public void onFocusChange(View v, boolean newViewFocus)
+            {
+                if (!newViewFocus)
+                {
+                    //Collapse the action item.
+                    searchItem.collapseActionView();
+                    //Clear the filter/search query.
+                    menu.findItem(R.id.action_search).setVisible(true);
+                    menu.findItem(R.id.action_notificattion).setVisible(true);
+                    menu.findItem(R.id.action_profile).setVisible(true);
+                }else{
                     menu.findItem(R.id.action_notificattion).setVisible(false);
                     menu.findItem(R.id.action_profile).setVisible(false);
                 }
             }
         });
-        // Detect SearchView close
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                if (menu != null) {
-                    menu.findItem(R.id.action_notificattion).setVisible(true);
-                    menu.findItem(R.id.action_profile).setVisible(true);
-                }
-                return false;
-            }
-        });
         return true;
 
     }
-
 
 
     @Override
@@ -176,9 +174,6 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.action_notificattion) {
             return true;
         } else if (id == R.id.action_profile) {
-            return true;
-        } else if (id == R.id.action_search) {
-            // search_layout.setVisibility(View.VISIBLE);
             return true;
         }
 

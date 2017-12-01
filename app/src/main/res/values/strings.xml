@@ -14,6 +14,14 @@
     <string name="btn_login">LOGIN</string>
     <string name="btn_skip">Skip</string>
 
+    <string-array name="default_preview">
+        <item>#df5a55</item>
+        <item>#f9bb72</item>
+        <item>#76afcf</item>
+        <item>#dd6495</item>
+        <item>#72d3b4</item>
+    </string-array>
+
     <string name="default_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
     <string name="work_content">Inaugaration of Mall</string>
 </resources>

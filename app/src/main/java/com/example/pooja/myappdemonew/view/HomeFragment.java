@@ -7,8 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -27,6 +28,7 @@ import com.tmall.ultraviewpager.UltraViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import devlight.io.library.ntb.NavigationTabBar;
 import me.relex.circleindicator.CircleIndicator;
 
 /**
@@ -35,7 +37,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class HomeFragment extends Fragment {
     private Context mContext;
-    private PagerAdapter mPagerAdapter;
+    private MyPagerAdapter mPagerAdapter;
     private ViewPager vpPager;
     private CircleIndicator titleIndicator;
     private ViewPager flycoViewpager;
@@ -47,6 +49,12 @@ public class HomeFragment extends Fragment {
     private final String[] mTitles = {"Services For You", "Shop-Stores", "Professions"};
     private final List<String> mFragmentTitleList = new ArrayList<>();
     private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private String[] colors;
+    //navigation tab bar details
+    private NavigationTabBar navigationTabBar;
+    private ViewPager vp_ntb;
+    private ArrayList<NavigationTabBar.Model> models;
+
 
     @Nullable
     @Override
@@ -57,16 +65,101 @@ public class HomeFragment extends Fragment {
         //setHasOptionsMenu(false);
         mContext = getActivity();
         attachViews(view);
-        setViewPager(view);
-        setFlycoViewPager(view);
+        setUltraOffersViewPager(view);
+        //setFlycoViewPager(view);
+        setHorizontalNtb(view);
         setWorksViewPager(view);
 
         return view;
     }
 
+    private void setHorizontalNtb(final View view) {
+        colors = mContext.getResources().getStringArray(R.array.default_preview);
+        vp_ntb = (ViewPager) view.findViewById(R.id.vp_horizontal_ntb);
+        setupViewPager(vp_ntb);
+        //mPagerAdapter=new MyPagerAdapter(mContext);
+       // vp_ntb.setAdapter(mPagerAdapter);
+
+        navigationTabBar = (NavigationTabBar) view.findViewById(R.id.ntb_horizontal);
+        models = new ArrayList<>();
+        addNtbListItems();
+        navigationTabBar.setModels(models);
+        navigationTabBar.setViewPager(vp_ntb);
+
+      /*  vp_ntb.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 5;
+            }
+
+            @Override
+            public boolean isViewFromObject(final View view, final Object object) {
+                return view.equals(object);
+            }
+
+            @Override
+            public void destroyItem(final View container, final int position, final Object object) {
+                ((ViewPager) container).removeView((View) object);
+            }
+
+            @Override
+            public Object instantiateItem(final ViewGroup container, final int position) {
+                final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_vp_list, null, false);
+
+                final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+                recyclerView.setAdapter(new RecycleAdapter());
+
+                container.addView(view);
+                return view;
+            }
+        });*/
+
+
+
+
+       /* navigationTabBar.post(new Runnable() {
+            @Override
+            public void run() {
+                final View viewPager = view.findViewById(R.id.vp_horizontal_ntb);
+                ((ViewGroup.MarginLayoutParams) viewPager.getLayoutParams()).topMargin =
+                        (int) -navigationTabBar.getBadgeMargin();
+                viewPager.requestLayout();
+            }
+        });*/
+
+
+    }
+
+    private void addNtbListItems() {
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_services),
+                        Color.parseColor(colors[0]))
+                        .title("Services")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_stores),
+                        Color.parseColor(colors[1]))
+                        .title("Stores")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_profession),
+                        Color.parseColor(colors[2]))
+                        .title("Profession")
+                        .build()
+        );
+    }
+
     private void attachViews(View view) {
-        iv_photo=(ImageView)view.findViewById(R.id.iv_photo);
-        tv_content=(TextView)view.findViewById(R.id.tv_work_content);
+        iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
+        tv_content = (TextView) view.findViewById(R.id.tv_work_content);
+
     }
 
     private void setWorksViewPager(View view) {
@@ -126,22 +219,23 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void setupViewPager(ViewPager flycoViewpager) {
-        MyFlycoPagerAdapter mAdapter = new MyFlycoPagerAdapter(getFragmentManager());
+    private void setupViewPager(ViewPager ntb_viewpager) {
+
+        MyNtbAdapter mAdapter = new MyNtbAdapter(getFragmentManager());
         mAdapter.addFragment(new ServicesFragment(), "Services For You");
         mAdapter.addFragment(new ShopStoresFragment(), "Shop-Stores");
         mAdapter.addFragment(new ProfessionsFragment(), "Professions");
         // mViewPager.setAdapter(mAdapter);
-        flycoViewpager.setAdapter(mAdapter);
+        ntb_viewpager.setAdapter(mAdapter);
     }
 
-    private void setViewPager(View view) {
+    private void setUltraOffersViewPager(View view) {
      /*   mPagerAdapter = new MyPagerAdapter(mContext);
         vpPager = (ViewPager) view.findViewById(R.id.vpPager);
         vpPager.setAdapter(mPagerAdapter);
         titleIndicator = (CircleIndicator) view.findViewById(R.id.indicator);
        // titleIndicator.configureIndicator(20, 20, 5);
-        titleIndicator.setViewPager(vpPager);
+        titleIndicator.setUltraOffersViewPager(vpPager);
 
 
         vpPager.setPageTransformer(false, new ViewPager.PageTransformer() {
@@ -189,9 +283,9 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private class MyFlycoPagerAdapter extends FragmentPagerAdapter {
+    private class MyNtbAdapter extends FragmentPagerAdapter {
 
-        public MyFlycoPagerAdapter(FragmentManager fm) {
+        public MyNtbAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -215,9 +309,38 @@ public class HomeFragment extends Fragment {
             mFragmentTitleList.add(title);
         }
 
-        @Override
+       /* @Override
         public int getItemPosition(Object object) {
             return PagerAdapter.POSITION_NONE;
+        }*/
+    }
+
+    public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
+
+        @Override
+        public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+            final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.txt.setText(String.format("Navigation Item #%d", position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return 20;
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            public TextView txt;
+
+            public ViewHolder(final View itemView) {
+                super(itemView);
+                txt = (TextView) itemView.findViewById(R.id.txt_vp_item_list);
+            }
         }
     }
 }
