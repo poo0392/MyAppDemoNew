@@ -1,4 +1,4 @@
-package com.example.pooja.myappdemonew.view;
+package com.example.pooja.myappdemonew.view.fragment;
 
 import android.support.v4.app.Fragment;
 

@@ -1,4 +1,4 @@
-package com.example.pooja.myappdemonew.view;
+package com.example.pooja.myappdemonew.view.fragment;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -23,7 +23,6 @@ import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
@@ -143,7 +142,7 @@ public class HomeFragment extends Fragment {
         //set an infinite loop
         worksUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        worksUtViewPager.setAutoScroll(2000);
+        worksUtViewPager.setAutoScroll(4000);
     }
 
 
@@ -183,7 +182,7 @@ public class HomeFragment extends Fragment {
         //set an infinite loop
         offersUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        offersUtViewPager.setAutoScroll(1000);
+        offersUtViewPager.setAutoScroll(3000);
 
     }
 

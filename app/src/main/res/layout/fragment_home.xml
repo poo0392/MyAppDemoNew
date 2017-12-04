@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.pooja.myappdemonew.view.HomeFragment">
+    tools:context="com.example.pooja.myappdemonew.view.fragment.HomeFragment">
 
     <FrameLayout
         android:id="@+id/keycontain"

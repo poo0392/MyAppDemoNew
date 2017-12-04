@@ -24,14 +24,19 @@ import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.utils.SessionManager;
+import com.example.pooja.myappdemonew.view.fragment.HomeFragment;
+import com.example.pooja.myappdemonew.view.fragment.InboxFragment;
+import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
+import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
+import com.example.pooja.myappdemonew.view.fragment.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private SessionManager session;
 
-    private LinearLayout ll_home, ll_profile, ll_notification, ll_offers, ll_linBase;
-    private ImageView iv_profile, iv_offers, iv_notification, iv_home;
-    private TextView txt_home, txt_profile, txt_notification, txt_offers;
+    private LinearLayout ll_home, ll_profile, ll_notification, ll_offers, ll_linBase, ll_inbox;
+    private ImageView iv_profile, iv_offers, iv_notification, iv_home, iv_inbox;
+    private TextView txt_home, txt_profile, txt_notification, txt_offers, txt_inbox;
     private SearchView simpleSearchView;
     private RelativeLayout search_layout;
     private Menu myMenu;
@@ -51,12 +56,14 @@ public class HomeActivity extends AppCompatActivity
         setListeners();
 
     }
-//aded Listenerss
+
+    //aded Listenerss
     private void setListeners() {
         ll_notification.setOnClickListener(this);
         ll_home.setOnClickListener(this);
         ll_profile.setOnClickListener(this);
         ll_offers.setOnClickListener(this);
+        ll_inbox.setOnClickListener(this);
 
         // perform set on query text listener event
        /* simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -89,11 +96,13 @@ public class HomeActivity extends AppCompatActivity
         iv_offers = (ImageView) findViewById(R.id.iv_offers);
         iv_profile = (ImageView) findViewById(R.id.iv_profile);
         iv_home = (ImageView) findViewById(R.id.iv_home);
+        iv_inbox = (ImageView) findViewById(R.id.iv_inbox);
 
         txt_notification = (TextView) findViewById(R.id.txt_notification);
         txt_home = (TextView) findViewById(R.id.txt_home);
         txt_profile = (TextView) findViewById(R.id.txt_profile);
         txt_offers = (TextView) findViewById(R.id.txt_offers);
+        txt_inbox = (TextView) findViewById(R.id.txt_inbox);
 
         ll_linBase = (LinearLayout) findViewById(R.id.ll_linBase);
 
@@ -101,6 +110,7 @@ public class HomeActivity extends AppCompatActivity
         ll_home = (LinearLayout) findViewById(R.id.ll_home);
         ll_profile = (LinearLayout) findViewById(R.id.ll_profile);
         ll_notification = (LinearLayout) findViewById(R.id.ll_notification);
+        ll_inbox = (LinearLayout) findViewById(R.id.ll_inbox);
     }
 
     private void setAppToolbar() {
@@ -139,20 +149,17 @@ public class HomeActivity extends AppCompatActivity
         if (searchItem != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener()
-        {
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean newViewFocus)
-            {
-                if (!newViewFocus)
-                {
+            public void onFocusChange(View v, boolean newViewFocus) {
+                if (!newViewFocus) {
                     //Collapse the action item.
                     searchItem.collapseActionView();
                     //Clear the filter/search query.
                     menu.findItem(R.id.action_search).setVisible(true);
                     menu.findItem(R.id.action_notificattion).setVisible(true);
                     menu.findItem(R.id.action_profile).setVisible(true);
-                }else{
+                } else {
                     menu.findItem(R.id.action_notificattion).setVisible(false);
                     menu.findItem(R.id.action_profile).setVisible(false);
                 }
@@ -189,9 +196,40 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_logout) {
             logoutUser();
         } else if (id == R.id.nav_home) {
+            setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
+            setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
+
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
             tx.replace(R.id.content_frame, new HomeFragment());
             tx.commit();
+        } else if (id == R.id.nav_notifications) {
+            setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
+            setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
+
+            FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
+            notifFrag.replace(R.id.content_frame, new NotificationFragment());
+            notifFrag.commit();
+        } else if (id == R.id.nav_offers) {
+            setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
+            setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
+
+            FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
+            offersFrag.replace(R.id.content_frame, new OffersFragment());
+            offersFrag.commit();
+        } else if (id == R.id.nav_inbox) {
+            setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+            setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
+
+            FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
+            inFrag.replace(R.id.content_frame, new InboxFragment());
+            inFrag.commit();
+        } else if (id == R.id.nav_profile) {
+            setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
+            setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
+
+            FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
+            propFrag.replace(R.id.content_frame, new ProfileFragment());
+            propFrag.commit();
         }
 
 
@@ -218,20 +256,17 @@ public class HomeActivity extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_notification:
-                setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers);
-                setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers);
+                setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
+                setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
 
-
-
-                /*FragmentTransaction custFrag = getSupportFragmentManager().beginTransaction();
-                custFrag.replace(R.id.content_frame, new CustomerListFragment());
-                custFrag.commit();*/
+                FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
+                notifFrag.replace(R.id.content_frame, new NotificationFragment());
+                notifFrag.commit();
                 break;
 
             case R.id.ll_home:
-                setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification);
-
-                setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers);
+                setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
+                setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
 
                 FragmentTransaction dashFrag = getSupportFragmentManager().beginTransaction();
                 dashFrag.replace(R.id.content_frame, new HomeFragment());
@@ -239,42 +274,51 @@ public class HomeActivity extends AppCompatActivity
                 break;
 
             case R.id.ll_offers:
-                setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification);
+                setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
+                setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
 
-                setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile);
-
-             /*   FragmentTransaction reportsFrag = getSupportFragmentManager().beginTransaction();
-                reportsFrag.replace(R.id.content_frame, new ReportsFragment());
-                reportsFrag.commit();*/
+                FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
+                offersFrag.replace(R.id.content_frame, new OffersFragment());
+                offersFrag.commit();
                 break;
 
             case R.id.ll_profile:
 
-                setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification);
-                setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification);
-/*
+                setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
+                setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
+
                 FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
-                propFrag.replace(R.id.content_frame, new PropertyListFragment());
-                propFrag.commit();*/
+                propFrag.replace(R.id.content_frame, new ProfileFragment());
+                propFrag.commit();
+                break;
+            case R.id.ll_inbox:
+
+                setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+                setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
+
+                FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
+                inFrag.replace(R.id.content_frame, new InboxFragment());
+                inFrag.commit();
                 break;
 
         }
     }
 
-    private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3) {
-        activeText.setTextColor(getResources().getColor(R.color.colorPrimary));
+    private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
+        activeText.setTextColor(getResources().getColor(R.color.black));
         inactiveText1.setTextColor(getResources().getColor(R.color.md_grey_500));
         inactiveText2.setTextColor(getResources().getColor(R.color.md_grey_500));
         inactiveText3.setTextColor(getResources().getColor(R.color.md_grey_500));
-        inactiveText2.setTextColor(getResources().getColor(R.color.md_grey_500));
+        inactiveText4.setTextColor(getResources().getColor(R.color.md_grey_500));
     }
 
-    private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3) {
+    private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
 
-        activeImg.setColorFilter(getResources().getColor(R.color.colorPrimary));
+        activeImg.setColorFilter(getResources().getColor(R.color.black));
         inactiveImg1.setColorFilter(getResources().getColor(R.color.md_grey_500));
         inactiveImg2.setColorFilter(getResources().getColor(R.color.md_grey_500));
         inactiveImg3.setColorFilter(getResources().getColor(R.color.md_grey_500));
+        inactiveImg4.setColorFilter(getResources().getColor(R.color.md_grey_500));
 
     }
 }

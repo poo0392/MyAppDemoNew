@@ -1,10 +1,10 @@
-package com.example.pooja.myappdemonew.view;
+package com.example.pooja.myappdemonew.view.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,8 +62,11 @@ public class ServicesFragment extends Fragment {
                 System.out.println("position on recCLick: " + pos);
                 switch (pos) {
                     case 0:
-                        Intent intent = new Intent(getActivity(), HealthActivity.class);
-                        startActivity(intent);
+                       /* Intent intent = new Intent(getActivity(), HealthActivity.class);
+                        startActivity(intent);*/
+                        FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
+                        propFrag.replace(R.id.content_frame, new HealthFragment());
+                        propFrag.commit();
                         break;
                     case 1:
                         break;
