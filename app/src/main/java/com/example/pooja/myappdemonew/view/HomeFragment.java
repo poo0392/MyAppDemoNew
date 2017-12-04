@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,6 +55,9 @@ public class HomeFragment extends Fragment {
     private NavigationTabBar navigationTabBar;
     private ViewPager vp_ntb;
     private ArrayList<NavigationTabBar.Model> models;
+    private TextView txt;
+    private EditText edt;
+
 
 
     @Nullable

@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity
         setListeners();
 
     }
-
+//aded Listenerss
     private void setListeners() {
         ll_notification.setOnClickListener(this);
         ll_home.setOnClickListener(this);
