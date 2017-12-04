@@ -86,39 +86,6 @@ public class HomeFragment extends Fragment {
         navigationTabBar.setModels(models);
         navigationTabBar.setViewPager(vp_ntb);
 
-      /*  vp_ntb.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return 5;
-            }
-
-            @Override
-            public boolean isViewFromObject(final View view, final Object object) {
-                return view.equals(object);
-            }
-
-            @Override
-            public void destroyItem(final View container, final int position, final Object object) {
-                ((ViewPager) container).removeView((View) object);
-            }
-
-            @Override
-            public Object instantiateItem(final ViewGroup container, final int position) {
-                final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_vp_list, null, false);
-
-                final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-                recyclerView.setAdapter(new RecycleAdapter());
-
-                container.addView(view);
-                return view;
-            }
-        });*/
-
-
-
-
        /* navigationTabBar.post(new Runnable() {
             @Override
             public void run() {
@@ -175,49 +142,7 @@ public class HomeFragment extends Fragment {
         worksUtViewPager.setAutoScroll(2000);
     }
 
-    private void setFlycoViewPager(View view) {
-        flycoViewpager = (ViewPager) view.findViewById(R.id.flyco_tab_vp);
-        setupViewPager(flycoViewpager);
 
-        //  TabLayout tb=(TabLayout) view.findViewById(R.id.tabLayout);
-        //  tb.setupWithViewPager(flycoViewpager);
-
-        tabLayout = (SlidingTabLayout) view.findViewById(R.id.tl_4);
-        tabLayout.setViewPager(flycoViewpager);
-        tabLayout.notifyDataSetChanged();
-        //tabLayout.setOnClickListener();
-
-        // tabLayout.setupWithViewPager(flycoViewpager);
-        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                //flycoViewpager.setCurrentItem(position);
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-            }
-        });
-
-        /*flycoViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                tabLayout.setCurrentTab(position);
-                // tabLayout.updateTabSelection(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });*/
-
-    }
 
     private void setupViewPager(ViewPager ntb_viewpager) {
 
@@ -230,31 +155,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUltraOffersViewPager(View view) {
-     /*   mPagerAdapter = new MyPagerAdapter(mContext);
-        vpPager = (ViewPager) view.findViewById(R.id.vpPager);
-        vpPager.setAdapter(mPagerAdapter);
-        titleIndicator = (CircleIndicator) view.findViewById(R.id.indicator);
-       // titleIndicator.configureIndicator(20, 20, 5);
-        titleIndicator.setUltraOffersViewPager(vpPager);
-
-
-        vpPager.setPageTransformer(false, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(View view, float position) {
-                int pageWidth = view.getWidth();
-                int pageHeight = view.getHeight();
-
-                if (position < -1) { // [-Infinity,-1)
-                    // This page is way off-screen to the left.
-                    view.setAlpha(0);
-                } else if (position <= 1) { // Page to the left, page centered, page to the right
-                    // modify page view animations here for pages in view
-                } else { // (1,+Infinity]
-                    // This page is way off-screen to the right.
-                    view.setAlpha(0);
-                }
-            }
-        });*/
         offersUtViewPager = (UltraViewPager) view.findViewById(R.id.ultra_viewpager);
         offersUtViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
@@ -269,16 +169,17 @@ public class HomeFragment extends Fragment {
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(Color.WHITE)
                 .setNormalColor(getResources().getColor(R.color.LightGrey))
-                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
         //set the alignment
         offersUtViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-        //construct built-in indicator, and add it to  UltraViewPager
+        //cons
+        // truct built-in indicator, and add it to  UltraViewPager
         offersUtViewPager.getIndicator().build();
 
         //set an infinite loop
         offersUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        offersUtViewPager.setAutoScroll(2000);
+        offersUtViewPager.setAutoScroll(1000);
 
     }
 
@@ -314,7 +215,7 @@ public class HomeFragment extends Fragment {
             return PagerAdapter.POSITION_NONE;
         }*/
     }
-
+//removed flycotab
     public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
 
         @Override

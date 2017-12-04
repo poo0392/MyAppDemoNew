@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.utils.SessionManager;
 
 /**
  * Created by Zafar.Hussain on 29/11/2017.
@@ -14,6 +15,7 @@ import com.example.pooja.myappdemonew.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private ProgressBar progress;
+    private SessionManager session;
 
 
     @Override
@@ -21,10 +23,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        progress=(ProgressBar)findViewById(R.id.progressBar_splash) ;
+        session = new SessionManager(getApplicationContext());
+        progress = (ProgressBar) findViewById(R.id.progressBar_splash);
         loadProgressBar();
 
     }
+
     private void loadProgressBar() {
         final int totalProgressTime = 100;
         final Thread t = new Thread() {
@@ -32,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 int jumpTime = 0;
 
-                while(jumpTime < totalProgressTime) {
+                while (jumpTime < totalProgressTime) {
                     try {
                         sleep(100);
                         jumpTime += 5;
@@ -42,11 +46,20 @@ public class SplashScreenActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                Intent i = new Intent(SplashScreenActivity.this, BannerWithLoginActivity.class);
-                startActivity(i);
+//added session to check if it is logged in
+                if (session.isLoggedIn()) {
+                    Intent i = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                    startActivity(i);
 
-                // close this activity
-                finish();
+                    // close this activity
+                    finish();
+                } else {
+                    Intent i = new Intent(SplashScreenActivity.this, BannerWithLoginActivity.class);
+                    startActivity(i);
+
+                    // close this activity
+                    finish();
+                }
             }
         };
         t.start();

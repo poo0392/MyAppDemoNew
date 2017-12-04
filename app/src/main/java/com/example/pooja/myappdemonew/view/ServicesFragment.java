@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.ServicesAdapter;
+import com.example.pooja.myappdemonew.model.ServicesModel;
 import com.example.pooja.myappdemonew.utils.ClickListener;
 import com.example.pooja.myappdemonew.utils.RecyclerTouchListener;
 
@@ -27,7 +28,7 @@ public class ServicesFragment extends Fragment {
     private RecyclerView mServicesRecycler;
     private GridLayoutManager mGrisdLayoutManager;
     private ServicesAdapter mServicesAdapter;
-    private ArrayList<String> mServicesList;
+    private ArrayList<ServicesModel> mServicesList;
 
     @Nullable
     @Override
@@ -44,7 +45,7 @@ public class ServicesFragment extends Fragment {
     private void attachView(View view) {
         mServicesRecycler=(RecyclerView)view.findViewById(R.id.services_recyclerview);
         mServicesRecycler.setHasFixedSize(true);
-        mGrisdLayoutManager=new GridLayoutManager(mContext,4);
+        mGrisdLayoutManager=new GridLayoutManager(mContext,3);
         mServicesRecycler.setLayoutManager(mGrisdLayoutManager);
 
 
@@ -80,16 +81,19 @@ public class ServicesFragment extends Fragment {
         }));
     }
 
-    private ArrayList<String> addListItems() {
+    //Added list items
+    private ArrayList<ServicesModel> addListItems() {
         mServicesList=new ArrayList<>();
-        mServicesList.add("Health");
-        mServicesList.add("Home & Office");
-        mServicesList.add("Beauty & Fashion");
-        mServicesList.add("Vehicle");
-        mServicesList.add("Finance");
-        mServicesList.add("Emergency");
-        mServicesList.add("Children & beloved");
-        mServicesList.add("Function & party");
+        mServicesList.add(new ServicesModel("Health",mContext.getResources().getDrawable(R.drawable.ic_health)));
+        mServicesList.add(new ServicesModel("Home & Office",mContext.getResources().getDrawable(R.drawable.ic_home_office)));
+        mServicesList.add(new ServicesModel("Beauty & Fashion",mContext.getResources().getDrawable(R.drawable.ic_fashion)));
+        mServicesList.add(new ServicesModel("Finance",mContext.getResources().getDrawable(R.drawable.ic_finance)));
+        mServicesList.add(new ServicesModel("Vehicle",mContext.getResources().getDrawable(R.drawable.ic_vehicle)));
+        mServicesList.add(new ServicesModel("Children & Beloved",mContext.getResources().getDrawable(R.drawable.ic_children)));
+        mServicesList.add(new ServicesModel("Function & Party",mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new ServicesModel("Repair",mContext.getResources().getDrawable(R.drawable.ic_health)));
+        mServicesList.add(new ServicesModel("Mahila Udyog",mContext.getResources().getDrawable(R.drawable.ic_health)));
+        mServicesList.add(new ServicesModel("Emergency",mContext.getResources().getDrawable(R.drawable.ic_emergency)));
         return mServicesList;
     }
 }
