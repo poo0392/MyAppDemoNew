@@ -7,14 +7,14 @@
         android:id="@+id/sub_item_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Gray"
+        android:background="@color/Silver"
         android:padding="10dp"/>
 
     <com.tmall.ultraviewpager.UltraViewPager
         android:id="@+id/ads_ut_viewpager"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/darker_gray" />
 
     <android.support.v7.widget.RecyclerView

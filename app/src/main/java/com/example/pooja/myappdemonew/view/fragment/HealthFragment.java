@@ -19,8 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.adapter.HealthItemRecyclerAdapter;
 import com.example.pooja.myappdemonew.adapter.HealthSubItemRecyclerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
+import com.example.pooja.myappdemonew.model.HealthItemModel;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
@@ -32,11 +34,13 @@ import java.util.ArrayList;
 public class HealthFragment extends Fragment {
     Context mContext;
     RecyclerView subItemRecyclerView, healthItemRecyclerView;
-    LinearLayoutManager subItemLLMgr,healthItemLLMgr;
+    LinearLayoutManager subItemLLMgr, healthItemLLMgr;
     UltraViewPager adsViewPager;
     UltraPagerAdapter adapter;
     ArrayList<String> subItemArrayList;
+    ArrayList<HealthItemModel> healthItemArrList;
     HealthSubItemRecyclerAdapter mHealthSubItemAdapter;
+    HealthItemRecyclerAdapter mHealthItemAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class HealthFragment extends Fragment {
     }
 
     private void setAdsUtViewPager(View view) {
+        adsViewPager = (UltraViewPager) view.findViewById(R.id.ads_ut_viewpager);
         adsViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
         adapter = new UltraPagerAdapter(mContext, "home", false);
@@ -101,18 +106,39 @@ public class HealthFragment extends Fragment {
         subItemRecyclerView.setItemAnimator(new DefaultItemAnimator());
         subItemLLMgr = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         subItemRecyclerView.setLayoutManager(subItemLLMgr);
-        addSubItemList();
+        subItemArrayList = addSubItemList();
+        //  Log.v("","ArrayList Size: "+subItemArrayList.size());
         mHealthSubItemAdapter = new HealthSubItemRecyclerAdapter(mContext, subItemArrayList);
         subItemRecyclerView.setAdapter(mHealthSubItemAdapter);
         mHealthSubItemAdapter.notifyDataSetChanged();
+
+
+        healthItemRecyclerView.setHasFixedSize(true);
+        healthItemRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        healthItemLLMgr = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        healthItemRecyclerView.setLayoutManager(healthItemLLMgr);
+        healthItemArrList = addHealthItemList();
+        mHealthItemAdapter = new HealthItemRecyclerAdapter(mContext, healthItemArrList);
+        healthItemRecyclerView.setAdapter(mHealthItemAdapter);
+        mHealthItemAdapter.notifyDataSetChanged();
     }
 
-    private void addSubItemList() {
-        subItemArrayList= new ArrayList<>();
+    private ArrayList<HealthItemModel> addHealthItemList() {
+        healthItemArrList = new ArrayList<>();
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.8", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.4", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.8", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.4", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        return healthItemArrList;
+    }
+
+    private ArrayList<String> addSubItemList() {
+        subItemArrayList = new ArrayList<>();
         subItemArrayList.add("Ambulance");
         subItemArrayList.add("Blood Bank");
         subItemArrayList.add("Chemist");
         subItemArrayList.add("Gym");
-
+        subItemArrayList.add("Hospitals & Clinics");
+        return subItemArrayList;
     }
 }
