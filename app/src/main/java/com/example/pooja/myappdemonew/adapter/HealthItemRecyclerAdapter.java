@@ -1,8 +1,10 @@
 package com.example.pooja.myappdemonew.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -37,7 +39,7 @@ public class HealthItemRecyclerAdapter extends RecyclerView.Adapter<HealthItemRe
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.tvItemName.setText(mArrList.get(position).getItemName());
         holder.ivItemPhoto.setImageDrawable(mArrList.get(position).getItemPhoto());
         holder.tvAddress.setText(mArrList.get(position).getAddress());
@@ -46,6 +48,37 @@ public class HealthItemRecyclerAdapter extends RecyclerView.Adapter<HealthItemRe
         holder.tvViewOffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            }
+        });
+        holder.tvOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //will show popup menu here
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(mContext, holder.tvOptions);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.health_option_menu);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu1:
+                                //handle menu1 click
+                                break;
+                            case R.id.menu2:
+                                //handle menu2 click
+                                break;
+                            case R.id.menu3:
+                                //handle menu3 click
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
 
             }
         });
