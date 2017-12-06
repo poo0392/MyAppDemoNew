@@ -3,6 +3,8 @@ package com.example.pooja.myappdemonew.view;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -115,6 +117,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void setAppToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -142,9 +145,18 @@ public class HomeActivity extends AppCompatActivity
         myMenu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+
+        setColorFilterMenu(menu);
+
+        setSearchViewMenu(menu);
+
+        return true;
+
+    }
+
+    private void setSearchViewMenu(final Menu menu) {
         final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView =
-                (SearchView) MenuItemCompat.getActionView(searchItem);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         if (searchItem != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -165,8 +177,16 @@ public class HomeActivity extends AppCompatActivity
                 }
             }
         });
-        return true;
+    }
 
+    private void setColorFilterMenu(Menu menu) {
+        for (int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
     }
 
 

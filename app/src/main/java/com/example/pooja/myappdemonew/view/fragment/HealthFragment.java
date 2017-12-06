@@ -125,10 +125,14 @@ public class HealthFragment extends Fragment {
 
     private ArrayList<HealthItemModel> addHealthItemList() {
         healthItemArrList = new ArrayList<>();
-        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.8", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
-        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.4", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
-        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.8", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
-        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.4", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.5", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.5", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.5", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.5", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.5", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.5", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
+        healthItemArrList.add(new HealthItemModel("Santosh Health Clinic", "4.5", mContext.getResources().getString(R.string.address1),mContext.getResources().getDrawable(R.drawable.health_img_one)));
+        healthItemArrList.add(new HealthItemModel("True Health Homoeopathic Pharmacy,", "3.5", mContext.getResources().getString(R.string.address2),mContext.getResources().getDrawable(R.drawable.health_img_two)));
         return healthItemArrList;
     }
 
