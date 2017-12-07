@@ -26,24 +26,50 @@
     <LinearLayout
         android:id="@+id/pol_ad"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:layout_below="@+id/keycontain"
+        android:background="@drawable/border_black_pol"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:padding="5dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight=".3">
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_weight=".25"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_photo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/shiva_shetty" />
+            <TextView
+                android:id="@+id/tv_pol_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shiva Shetty"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tv_pol_desgn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Corporator"
+                android:layout_gravity="center"
+                android:textSize="13sp"
+                android:paddingTop="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/Gray"/>
         </LinearLayout>
 
         <LinearLayout
@@ -57,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="7dp"
-                android:text="@string/work_content" />
+                android:text="@string/work_content"
+                android:visibility="gone"/>
 
             <com.tmall.ultraviewpager.UltraViewPager
                 android:id="@+id/ultra_photo_vp"

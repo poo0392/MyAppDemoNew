@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
 
@@ -23,6 +24,7 @@ public class UltraPagerAdapter extends PagerAdapter {
     private boolean isMultiScr;
     private int[] image = {R.drawable.mall, R.drawable.building, R.drawable.garden};
     private int[] imageTwo = {R.drawable.img_offers_one, R.drawable.img_offers_two, R.drawable.img_offers_one, R.drawable.img_offers_two};
+    private String [] title={"Inaugaration of Mall","New Project Development","Inaugaration of Mall","New Project Development"};
 
     public UltraPagerAdapter(Context mContext, String from,boolean isMultiScr) {
         this.isMultiScr = isMultiScr;
@@ -72,12 +74,14 @@ public class UltraPagerAdapter extends PagerAdapter {
                 linearLayout.setBackgroundColor(Color.parseColor("#F44336"));
                 break;*/
         View itemView = LayoutInflater.from(container.getContext()).inflate(R.layout.swipe_layout, container, false);
-
+        TextView tv_item_title=(TextView) itemView.findViewById(R.id.tv_item_title);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         if(from.equals("home")){
             imageView.setImageResource(imageTwo[position]);
+            tv_item_title.setVisibility(View.GONE);
         }else {
             imageView.setImageResource(image[position]);
+            tv_item_title.setText(title[position]);
         }
         container.addView(itemView);
 
