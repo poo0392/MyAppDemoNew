@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private SessionManager session;
 
-    private LinearLayout ll_home, ll_profile, ll_notification, ll_offers, ll_linBase, ll_inbox;
+    private LinearLayout ll_home, ll_profile, ll_notification, ll_offers, ll_linBase, ll_inbox, ll_custom_search;
     private ImageView iv_profile, iv_offers, iv_notification, iv_home, iv_inbox;
     private TextView txt_home, txt_profile, txt_notification, txt_offers, txt_inbox;
     private SearchView simpleSearchView;
@@ -66,6 +66,7 @@ public class HomeActivity extends AppCompatActivity
         ll_profile.setOnClickListener(this);
         ll_offers.setOnClickListener(this);
         ll_inbox.setOnClickListener(this);
+      //  ll_custom_search.setOnClickListener(this);
 
         // perform set on query text listener event
        /* simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -107,6 +108,7 @@ public class HomeActivity extends AppCompatActivity
         txt_inbox = (TextView) findViewById(R.id.txt_inbox);
 
         ll_linBase = (LinearLayout) findViewById(R.id.ll_linBase);
+        ll_custom_search = (LinearLayout) findViewById(R.id.ll_custom_search);
 
         ll_offers = (LinearLayout) findViewById(R.id.ll_offers);
         ll_home = (LinearLayout) findViewById(R.id.ll_home);
@@ -117,7 +119,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void setAppToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -149,6 +151,8 @@ public class HomeActivity extends AppCompatActivity
         setColorFilterMenu(menu);
 
         setSearchViewMenu(menu);
+
+
 
         return true;
 
@@ -184,7 +188,7 @@ public class HomeActivity extends AppCompatActivity
             Drawable drawable = menu.getItem(i).getIcon();
             if (drawable != null) {
                 drawable.mutate();
-                drawable.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+                drawable.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
             }
         }
     }
@@ -275,6 +279,8 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+           /* case R.id.ll_custom_search:
+                break;*/
             case R.id.ll_notification:
                 setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
                 setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);

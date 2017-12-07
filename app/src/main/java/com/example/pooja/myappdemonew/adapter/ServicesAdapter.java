@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
     Context context;
     ArrayList<ServicesModel> mServicesList;
+    String[] colors;
 
     public ServicesAdapter(Context context, ArrayList<ServicesModel> mServicesList) {
         this.context = context;
@@ -35,8 +36,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        //colors = context.getResources().getStringArray(R.array.services_icon_color);
         holder.itemTitle.setText(mServicesList.get(position).getItem_name());
         holder.itemIcon.setImageDrawable(mServicesList.get(position).getItem_icon());
+        //holder.itemIcon.setColorFilter(String.valueOf(colors[position]));
+      //  holder.itemIcon.setColorFilter(ContextCompat.getColor(context, Color.parseColor(colors[position])), android.graphics.PorterDuff.Mode.MULTIPLY);
+      //  holder.itemTitle.setTextColor(Integer.parseInt(colors[position]));
 
     }
 

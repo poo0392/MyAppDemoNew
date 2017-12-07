@@ -20,6 +20,37 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:theme="@style/AppTheme.AppBarOverlay"
             app:titleTextAppearance="@style/Toolbar.TitleText"/>
+
+        <LinearLayout
+            android:id="@+id/ll_custom_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/search_box_bg"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/search"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/Gray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search Products,Stores and Services"
+                android:gravity="left|center"
+                android:textColor="@color/Gray"
+                android:textSize="14sp"
+                android:padding="10dp"/>
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_home" />

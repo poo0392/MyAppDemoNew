@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,70 +25,82 @@
     <LinearLayout
         android:id="@+id/pol_ad"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="170dp"
         android:layout_below="@+id/keycontain"
-        android:background="@drawable/border_black_pol"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:padding="5dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_black_pol"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight=".25"
-            android:orientation="vertical">
+            android:layout_marginRight="5dp">
 
             <ImageView
                 android:id="@+id/iv_photo"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/shiva_shetty" />
-            <TextView
-                android:id="@+id/tv_pol_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shiva Shetty"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:paddingTop="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/tv_pol_desgn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Corporator"
-                android:layout_gravity="center"
-                android:textSize="13sp"
-                android:paddingTop="2dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@color/Gray"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".6"
+            android:layout_weight=".8"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_work_content"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
-                android:text="@string/work_content"
-                android:visibility="gone"/>
+                android:orientation="horizontal">
 
-            <com.tmall.ultraviewpager.UltraViewPager
-                android:id="@+id/ultra_photo_vp"
+                <TextView
+                    android:id="@+id/tv_pol_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Shiva Shetty"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_pol_desgn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Corporator"
+                    android:textColor="@color/Gray"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_work_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:text="@string/work_content"
+                    android:visibility="gone"/>
+
+                <com.tmall.ultraviewpager.UltraViewPager
+                    android:id="@+id/ultra_photo_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
@@ -97,8 +108,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
         android:layout_below="@+id/pol_ad"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -115,11 +126,11 @@
                 app:ntb_badge_title_color="#ffffffff"
                 app:ntb_badge_use_typeface="true"
                 app:ntb_badged="true"
-                app:ntb_bg_color="@color/black"
+                app:ntb_bg_color="@color/colorPrimary"
                 app:ntb_scaled="false"
                 app:ntb_title_mode="active"
                 app:ntb_title_size="15sp"
-                app:ntb_titled="true"/>
+                app:ntb_titled="true" />
         </FrameLayout>
 
         <android.support.v4.view.ViewPager

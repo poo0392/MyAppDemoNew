@@ -1,7 +1,7 @@
 package com.example.pooja.myappdemonew.view.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +22,8 @@ import android.widget.TextView;
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
+import com.example.pooja.myappdemonew.view.HomeActivity;
+import com.example.pooja.myappdemonew.view.PolitianProfileActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.tmall.ultraviewpager.UltraViewPager;
 
@@ -58,7 +60,6 @@ public class HomeFragment extends Fragment {
     private EditText edt;
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -77,11 +78,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void setHorizontalNtb(final View view) {
-        colors = mContext.getResources().getStringArray(R.array.default_preview);
+      //  colors = mContext.getResources().getStringArray(R.array.default_preview);
         vp_ntb = (ViewPager) view.findViewById(R.id.vp_horizontal_ntb);
         setupViewPager(vp_ntb);
         //mPagerAdapter=new MyPagerAdapter(mContext);
-       // vp_ntb.setAdapter(mPagerAdapter);
+        // vp_ntb.setAdapter(mPagerAdapter);
 
         navigationTabBar = (NavigationTabBar) view.findViewById(R.id.ntb_horizontal);
         models = new ArrayList<>();
@@ -106,21 +107,21 @@ public class HomeFragment extends Fragment {
         models.add(
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.ic_services),
-                        Color.parseColor(colors[0]))
+                        mContext.getResources().getColor(R.color.colorAccent))
                         .title("Services")
                         .build()
         );
         models.add(
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.ic_stores),
-                        Color.parseColor(colors[1]))
+                        mContext.getResources().getColor(R.color.colorAccent))
                         .title("Stores")
                         .build()
         );
         models.add(
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.ic_profession),
-                        Color.parseColor(colors[2]))
+                        mContext.getResources().getColor(R.color.colorAccent))
                         .title("Profession")
                         .build()
         );
@@ -129,6 +130,14 @@ public class HomeFragment extends Fragment {
     private void attachViews(View view) {
         iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
         tv_content = (TextView) view.findViewById(R.id.tv_work_content);
+
+        iv_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PolitianProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -144,7 +153,6 @@ public class HomeFragment extends Fragment {
         //enable auto-scroll mode
         worksUtViewPager.setAutoScroll(4000);
     }
-
 
 
     private void setupViewPager(ViewPager ntb_viewpager) {
@@ -170,9 +178,9 @@ public class HomeFragment extends Fragment {
         //set style of indicators
         offersUtViewPager.getIndicator()
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-                .setFocusColor(Color.WHITE)
+                .setFocusColor(getResources().getColor(R.color.colorAccent))
                 .setNormalColor(getResources().getColor(R.color.LightGrey))
-                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
         //set the alignment
         offersUtViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
         //cons
@@ -218,7 +226,8 @@ public class HomeFragment extends Fragment {
             return PagerAdapter.POSITION_NONE;
         }*/
     }
-//removed flycotab
+
+    //removed flycotab
     public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
 
         @Override
