@@ -23,7 +23,7 @@ public class UltraPagerAdapter extends PagerAdapter {
     private ArrayList<Integer> mList;
     private boolean isMultiScr;
     private int[] image = {R.drawable.mall, R.drawable.building, R.drawable.garden};
-    private int[] imageTwo = {R.drawable.img_offers_one, R.drawable.img_offers_two, R.drawable.img_offers_one, R.drawable.img_offers_two};
+    private int[] imageTwo = {R.drawable.offers_one, R.drawable.offers_two, R.drawable.offers_three, R.drawable.offers_four};
     private String [] title={"Inaugaration of Mall","New Project Development","Inaugaration of Mall","New Project Development"};
 
     public UltraPagerAdapter(Context mContext, String from,boolean isMultiScr) {

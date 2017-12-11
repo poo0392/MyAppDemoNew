@@ -41,12 +41,13 @@ public class HealthFragment extends Fragment {
     ArrayList<HealthItemModel> healthItemArrList;
     HealthSubItemRecyclerAdapter mHealthSubItemAdapter;
     HealthItemRecyclerAdapter mHealthItemAdapter;
+    Toolbar toolbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_health, container, false);
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle("Health");
+        toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        setTootlbarTitle("Health");
         // setHasOptionsMenu(false);
 
         mContext = getActivity();
@@ -54,13 +55,17 @@ public class HealthFragment extends Fragment {
         setAdsUtViewPager(view);
         return view;
     }
-
+    private void setTootlbarTitle(String title) {
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+    }
     private void setAdsUtViewPager(View view) {
         adsViewPager = (UltraViewPager) view.findViewById(R.id.ads_ut_viewpager);
         adsViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
         adapter = new UltraPagerAdapter(mContext, "home", false);
         adsViewPager.setAdapter(adapter);
+
 
         //initialize built-in indicator
         adsViewPager.initIndicator();
@@ -69,9 +74,10 @@ public class HealthFragment extends Fragment {
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(Color.WHITE)
                 .setNormalColor(getResources().getColor(R.color.LightGrey))
-                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
         //set the alignment
         adsViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+        adsViewPager.getIndicator().setMargin(0,0,0,10);
         //cons
         // truct built-in indicator, and add it to  UltraViewPager
         adsViewPager.getIndicator().build();

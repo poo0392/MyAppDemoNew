@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
@@ -20,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.example.pooja.myappdemonew.view.HomeActivity;
@@ -49,8 +53,7 @@ public class HomeFragment extends Fragment {
     private TextView tv_content;
     private SlidingTabLayout tabLayout;
     private final String[] mTitles = {"Services For You", "Shop-Stores", "Professions"};
-    private final List<String> mFragmentTitleList = new ArrayList<>();
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+
     private String[] colors;
     //navigation tab bar details
     private NavigationTabBar navigationTabBar;
@@ -58,17 +61,24 @@ public class HomeFragment extends Fragment {
     private ArrayList<NavigationTabBar.Model> models;
     private TextView txt;
     private EditText edt;
+    Toolbar toolbar;
+    TabLayout mTabLayout;
+    CardView cv_services,cv_shops,cv_profession;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
+
+        toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        setTootlbarTitle("Home");
+
+
         //setHasOptionsMenu(false);
         mContext = getActivity();
         attachViews(view);
+        setClickListeners();
         setUltraOffersViewPager(view);
         //setFlycoViewPager(view);
         setHorizontalNtb(view);
@@ -77,12 +87,49 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    private void setClickListeners() {
+        cv_profession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
+                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+                tx.commit();
+            }
+        });
+
+        cv_services.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
+                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+                tx.commit();
+            }
+        });
+        cv_shops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
+                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+                tx.commit();
+            }
+        });
+    }
+
+    private void setTootlbarTitle(String title) {
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+    }
+
     private void setHorizontalNtb(final View view) {
-      //  colors = mContext.getResources().getStringArray(R.array.default_preview);
+        //  colors = mContext.getResources().getStringArray(R.array.default_preview);
         vp_ntb = (ViewPager) view.findViewById(R.id.vp_horizontal_ntb);
         setupViewPager(vp_ntb);
         //mPagerAdapter=new MyPagerAdapter(mContext);
         // vp_ntb.setAdapter(mPagerAdapter);
+
+        mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        mTabLayout.setupWithViewPager(vp_ntb);
 
         navigationTabBar = (NavigationTabBar) view.findViewById(R.id.ntb_horizontal);
         models = new ArrayList<>();
@@ -130,6 +177,10 @@ public class HomeFragment extends Fragment {
     private void attachViews(View view) {
         iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
         tv_content = (TextView) view.findViewById(R.id.tv_work_content);
+
+        cv_profession=(CardView)view.findViewById(R.id.cv_profession);
+        cv_shops=(CardView)view.findViewById(R.id.cv_shops);
+        cv_services=(CardView)view.findViewById(R.id.cv_services);
 
         iv_photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,9 +231,10 @@ public class HomeFragment extends Fragment {
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(getResources().getColor(R.color.colorAccent))
                 .setNormalColor(getResources().getColor(R.color.LightGrey))
-                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
         //set the alignment
         offersUtViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+        offersUtViewPager.getIndicator().setMargin(0,0,0,10);
         //cons
         // truct built-in indicator, and add it to  UltraViewPager
         offersUtViewPager.getIndicator().build();
@@ -195,65 +247,5 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private class MyNtbAdapter extends FragmentPagerAdapter {
 
-        public MyNtbAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragments.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-       /* @Override
-        public int getItemPosition(Object object) {
-            return PagerAdapter.POSITION_NONE;
-        }*/
-    }
-
-    //removed flycotab
-    public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
-
-        @Override
-        public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-            final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
-            holder.txt.setText(String.format("Navigation Item #%d", position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return 20;
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-
-            public TextView txt;
-
-            public ViewHolder(final View itemView) {
-                super(itemView);
-                txt = (TextView) itemView.findViewById(R.id.txt_vp_item_list);
-            }
-        }
-    }
 }

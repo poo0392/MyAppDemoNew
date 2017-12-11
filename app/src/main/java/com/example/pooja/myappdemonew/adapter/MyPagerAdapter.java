@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import com.example.pooja.myappdemonew.R;
 
 public class MyPagerAdapter extends PagerAdapter{
-	private int[] image={R.drawable.img_offers_one,R.drawable.img_offers_two,R.drawable.img_offers_one,R.drawable.img_offers_two};
+	private int[] image={R.drawable.offers_one,R.drawable.offers_two,R.drawable.offers_three,R.drawable.offers_four};
 	private Context ctx;
 	private LayoutInflater mLayoutInflater;
 
