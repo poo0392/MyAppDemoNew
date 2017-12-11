@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -26,13 +23,11 @@ import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
-import com.example.pooja.myappdemonew.view.HomeActivity;
 import com.example.pooja.myappdemonew.view.PolitianProfileActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import devlight.io.library.ntb.NavigationTabBar;
 import me.relex.circleindicator.CircleIndicator;
@@ -118,7 +113,7 @@ public class HomeFragment extends Fragment {
 
     private void setTootlbarTitle(String title) {
         toolbar.setTitle(title);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
     }
 
     private void setHorizontalNtb(final View view) {
@@ -176,7 +171,7 @@ public class HomeFragment extends Fragment {
 
     private void attachViews(View view) {
         iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
-        tv_content = (TextView) view.findViewById(R.id.tv_work_content);
+       // tv_content = (TextView) view.findViewById(R.id.tv_work_content);
 
         cv_profession=(CardView)view.findViewById(R.id.cv_profession);
         cv_shops=(CardView)view.findViewById(R.id.cv_shops);

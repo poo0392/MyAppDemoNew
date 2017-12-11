@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_gravity="center"
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="@color/white"
+                android:background="@drawable/border_black"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -46,7 +46,7 @@
                     android:id="@+id/email"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="@color/white"
+                android:background="@drawable/border_black"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -74,7 +74,7 @@
                     android:id="@+id/password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:padding="10dp"
@@ -89,7 +89,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
-                android:background="@color/white"
+                android:background="@color/colorAccent"
                 android:text="@string/btn_login"
                 android:textColor="@color/Black" />
 

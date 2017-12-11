@@ -61,7 +61,7 @@ public class NewFeaturesFragment extends Fragment {
 
     private void setTootlbarTitle(String title) {
         toolbar.setTitle(title);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
     }
 
     private void setupViewPager(ViewPager ntb_viewpager) {

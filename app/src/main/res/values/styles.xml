@@ -27,7 +27,7 @@
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
-        <item name="color">@color/colorAccent</item>
+        <item name="color">@color/toolbarIconColor</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -35,7 +35,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="LinearProgress" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/splashIconColor</item>
     </style>
 
     <style name="RatingBarStyle" pparent="@android:style/Widget.RatingBar">

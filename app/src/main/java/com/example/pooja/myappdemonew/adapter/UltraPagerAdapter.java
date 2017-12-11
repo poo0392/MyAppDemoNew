@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
@@ -24,9 +24,9 @@ public class UltraPagerAdapter extends PagerAdapter {
     private boolean isMultiScr;
     private int[] image = {R.drawable.mall, R.drawable.building, R.drawable.garden};
     private int[] imageTwo = {R.drawable.offers_one, R.drawable.offers_two, R.drawable.offers_three, R.drawable.offers_four};
-    private String [] title={"Inaugaration of Mall","New Project Development","Inaugaration of Mall","New Project Development"};
+    private String[] title = {"Inaugaration of Mall", "New Project Development", "Inaugaration of Mall", "New Project Development"};
 
-    public UltraPagerAdapter(Context mContext, String from,boolean isMultiScr) {
+    public UltraPagerAdapter(Context mContext, String from, boolean isMultiScr) {
         this.isMultiScr = isMultiScr;
         this.mContext = mContext;
         this.from = from;
@@ -38,9 +38,9 @@ public class UltraPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        if(from.equals("home")) {
+        if (from.equals("home")) {
             return imageTwo.length;
-        }else{
+        } else {
             return image.length;
         }
     }
@@ -74,12 +74,12 @@ public class UltraPagerAdapter extends PagerAdapter {
                 linearLayout.setBackgroundColor(Color.parseColor("#F44336"));
                 break;*/
         View itemView = LayoutInflater.from(container.getContext()).inflate(R.layout.swipe_layout, container, false);
-        TextView tv_item_title=(TextView) itemView.findViewById(R.id.tv_item_title);
+        TextView tv_item_title = (TextView) itemView.findViewById(R.id.tv_item_title);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-        if(from.equals("home")){
+        if (from.equals("home")) {
             imageView.setImageResource(imageTwo[position]);
             tv_item_title.setVisibility(View.GONE);
-        }else {
+        } else {
             imageView.setImageResource(image[position]);
             tv_item_title.setText(title[position]);
         }
@@ -96,6 +96,6 @@ public class UltraPagerAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
        /* LinearLayout view = (LinearLayout) object;
         container.removeView(view);*/
-        container.removeView((LinearLayout) object);
+        container.removeView((RelativeLayout) object);
     }
 }

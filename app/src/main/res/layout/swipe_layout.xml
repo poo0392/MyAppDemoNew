@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/tv_item_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="Inaugaration of Mall"
-        android:textSize="15sp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        />
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/parent">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,4 +12,23 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@drawable/img_offers_one" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_below="@+id/imageView"
+        android:gravity="bottom|left">
+
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Inaugaration of Mall"
+        android:background="@color/black_transparent"
+        android:textSize="17sp"
+        android:padding="5dp"/>
+    </LinearLayout>
+</RelativeLayout>

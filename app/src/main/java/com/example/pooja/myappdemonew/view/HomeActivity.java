@@ -47,16 +47,10 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.content_frame, new HomeFragment());
-        tx.commit();
-
         setAppToolbar();
-
         attachViews();
         setListeners();
-
+        callHomeFragment();
     }
 
     //aded Listenerss
@@ -188,7 +182,7 @@ public class HomeActivity extends AppCompatActivity
             Drawable drawable = menu.getItem(i).getIcon();
             if (drawable != null) {
                 drawable.mutate();
-                drawable.setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                drawable.setColorFilter(getResources().getColor(R.color.toolbarIconColor), PorterDuff.Mode.SRC_ATOP);
             }
         }
     }
@@ -220,46 +214,81 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_logout) {
             logoutUser();
         } else if (id == R.id.nav_home) {
-            setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
-            setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
 
-            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-            tx.replace(R.id.content_frame, new HomeFragment());
-            tx.commit();
+            callHomeFragment();
+
         } else if (id == R.id.nav_notifications) {
-            setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
-            setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
 
-            FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
-            notifFrag.replace(R.id.content_frame, new NotificationFragment());
-            notifFrag.commit();
+            callNotificationFragment();
+
         } else if (id == R.id.nav_offers) {
-            setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
-            setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
 
-            FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
-            offersFrag.replace(R.id.content_frame, new OffersFragment());
-            offersFrag.commit();
+            callOffersFragment();
+
         } else if (id == R.id.nav_inbox) {
-            setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
-            setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
 
-            FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
-            inFrag.replace(R.id.content_frame, new InboxFragment());
-            inFrag.commit();
+            callInboxFragment();
+
         } else if (id == R.id.nav_profile) {
-            setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
-            setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
 
-            FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
-            propFrag.replace(R.id.content_frame, new ProfileFragment());
-            propFrag.commit();
+            callProfileFragment();
+
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void callProfileFragment() {
+        setActiveLayoutColor(ll_profile,ll_home,ll_offers,ll_notification,ll_inbox);
+        setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
+        setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
+
+        FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
+        propFrag.replace(R.id.content_frame, new ProfileFragment());
+        propFrag.commit();
+    }
+
+    private void callInboxFragment() {
+        setActiveLayoutColor(ll_inbox,ll_profile,ll_home,ll_offers,ll_notification);
+        setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+        setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
+
+        FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
+        inFrag.replace(R.id.content_frame, new InboxFragment());
+        inFrag.commit();
+    }
+
+    private void callOffersFragment() {
+        setActiveLayoutColor(ll_offers,ll_profile,ll_home,ll_notification,ll_inbox);
+        setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
+        setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
+
+        FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
+        offersFrag.replace(R.id.content_frame, new OffersFragment());
+        offersFrag.commit();
+    }
+
+    private void callNotificationFragment() {
+        setActiveLayoutColor(ll_notification,ll_profile,ll_home,ll_offers,ll_inbox);
+        setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
+        setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
+
+        FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
+        notifFrag.replace(R.id.content_frame, new NotificationFragment());
+        notifFrag.commit();
+    }
+
+    private void callHomeFragment() {
+        setActiveLayoutColor(ll_home,ll_profile,ll_offers,ll_notification,ll_inbox);
+        setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
+        setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
+
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.content_frame, new HomeFragment());
+        tx.commit();
     }
 
     /**
@@ -282,69 +311,49 @@ public class HomeActivity extends AppCompatActivity
            /* case R.id.ll_custom_search:
                 break;*/
             case R.id.ll_notification:
-                setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
-                setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
-
-                FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
-                notifFrag.replace(R.id.content_frame, new NotificationFragment());
-                notifFrag.commit();
+                callNotificationFragment();
                 break;
 
             case R.id.ll_home:
-                setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
-                setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
-
-                FragmentTransaction dashFrag = getSupportFragmentManager().beginTransaction();
-                dashFrag.replace(R.id.content_frame, new HomeFragment());
-                dashFrag.commit();
+                callHomeFragment();
                 break;
 
             case R.id.ll_offers:
-                setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
-                setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
-
-                FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
-                offersFrag.replace(R.id.content_frame, new OffersFragment());
-                offersFrag.commit();
+                callOffersFragment();
                 break;
 
             case R.id.ll_profile:
-
-                setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
-                setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
-
-                FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
-                propFrag.replace(R.id.content_frame, new ProfileFragment());
-                propFrag.commit();
+                callProfileFragment();
                 break;
             case R.id.ll_inbox:
-
-                setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
-                setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
-
-                FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
-                inFrag.replace(R.id.content_frame, new InboxFragment());
-                inFrag.commit();
+                callInboxFragment();
                 break;
 
         }
     }
 
     private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
-        activeText.setTextColor(getResources().getColor(R.color.black));
-        inactiveText1.setTextColor(getResources().getColor(R.color.md_grey_500));
-        inactiveText2.setTextColor(getResources().getColor(R.color.md_grey_500));
-        inactiveText3.setTextColor(getResources().getColor(R.color.md_grey_500));
-        inactiveText4.setTextColor(getResources().getColor(R.color.md_grey_500));
+        activeText.setTextColor(getResources().getColor(R.color.white));
+        inactiveText1.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveText2.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveText3.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveText4.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
     }
 
     private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
 
-        activeImg.setColorFilter(getResources().getColor(R.color.black));
-        inactiveImg1.setColorFilter(getResources().getColor(R.color.md_grey_500));
-        inactiveImg2.setColorFilter(getResources().getColor(R.color.md_grey_500));
-        inactiveImg3.setColorFilter(getResources().getColor(R.color.md_grey_500));
-        inactiveImg4.setColorFilter(getResources().getColor(R.color.md_grey_500));
+        activeImg.setColorFilter(getResources().getColor(R.color.white));
+        inactiveImg1.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveImg2.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveImg3.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveImg4.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
+    }
 
+    private void setActiveLayoutColor(LinearLayout activeLayout, LinearLayout inactiveLayout1, LinearLayout inactiveLayout2, LinearLayout inactiveLayout3, LinearLayout inactiveLayout4) {
+        activeLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        inactiveLayout1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        inactiveLayout2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        inactiveLayout3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        inactiveLayout4.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     }
 }

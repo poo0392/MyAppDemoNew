@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class BannerWithLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView app_icon;
     private RecyclerView banner_recyclerview;
-    private TextView tv_sign_up, tv_login, tv_google_plus_login;
+    private TextView tv_sign_up, tv_login, tv_skip;
     // private UltraViewPager ultraViewPager;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<BannerListModel> mBannerList;
@@ -45,7 +45,7 @@ public class BannerWithLoginActivity extends AppCompatActivity implements View.O
 
         tv_sign_up = (TextView) findViewById(R.id.tv_sign_up);
         tv_login = (TextView) findViewById(R.id.tv_login);
-        tv_google_plus_login = (TextView) findViewById(R.id.tv_google_plus_login);
+        tv_skip = (TextView) findViewById(R.id.tv_skip);
 
         banner_recyclerview = (RecyclerView) findViewById(R.id.banner_recycler);
         banner_recyclerview.setHasFixedSize(true);
@@ -80,7 +80,7 @@ public class BannerWithLoginActivity extends AppCompatActivity implements View.O
     private void setListeners() {
         tv_sign_up.setOnClickListener(this);
         tv_login.setOnClickListener(this);
-        tv_google_plus_login.setOnClickListener(this);
+        tv_skip.setOnClickListener(this);
     }
 
     @Override
@@ -89,6 +89,11 @@ public class BannerWithLoginActivity extends AppCompatActivity implements View.O
             case R.id.tv_login:
                 Intent intent = new Intent(BannerWithLoginActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
+                break;
+            case R.id.tv_skip:
+                Intent in = new Intent(BannerWithLoginActivity.this, HomeActivity.class);
+                startActivity(in);
                 finish();
                 break;
         }

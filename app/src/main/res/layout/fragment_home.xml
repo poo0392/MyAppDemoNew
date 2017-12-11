@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,365 +8,469 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.pooja.myappdemonew.view.fragment.HomeFragment">
 
-    <FrameLayout
-        android:id="@+id/keycontain"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:visibility="visible">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <com.tmall.ultraviewpager.UltraViewPager
-            android:id="@+id/ultra_viewpager"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@android:color/darker_gray" />
-    </FrameLayout>
+            android:layout_height="wrap_content">
 
-    <!--Changes in ads section-->
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_pol_ad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/keycontain"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="3dp">
-
-        <LinearLayout
-            android:id="@+id/pol_ad"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:id="@+id/keycontain"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp">
+                android:background="#ffffff"
+                android:visibility="visible">
 
-                <ImageView
-                    android:id="@+id/iv_photo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/shiva_shetty" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".8"
-                android:orientation="vertical">
-
-                <LinearLayout
+                <com.tmall.ultraviewpager.UltraViewPager
+                    android:id="@+id/ultra_viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="130dp"
+                    android:background="@android:color/darker_gray" />
+            </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/tv_pol_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:gravity="center"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="Shiva Shetty"
-                        android:textColor="@color/black"
-                        android:textSize="17sp" />
-
-                    <TextView
-                        android:id="@+id/tv_pol_desgn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="Corporator"
-                        android:textColor="@color/Gray"
-                        android:textSize="13sp" />
-                </LinearLayout>
+            <!--Changes in ads section-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_pol_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/keycontain"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_work_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="7dp"
-                        android:text="@string/work_content"
-                        android:visibility="gone" />
 
                     <com.tmall.ultraviewpager.UltraViewPager
                         android:id="@+id/ultra_photo_vp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="140dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="@color/colorPrimary"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_photo"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/shiva_shetty" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tv_pol_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Shiva Shetty"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/tv_pol_desgn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Corporator"
+                                android:textColor="@color/Gray"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <!--<LinearLayout
+                    android:id="@+id/pol_ad"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp">
+
+                        <ImageView
+                            android:id="@+id/iv_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/shiva_shetty" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_work_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="7dp"
+                            android:text="@string/work_content"
+                            android:visibility="gone" />
+
+                        <com.tmall.ultraviewpager.UltraViewPager
+                            android:id="@+id/ultra_photo_vp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                 &lt;!&ndash;   <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".8"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_pol_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Shiva Shetty"
+                                android:textColor="@color/black"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/tv_pol_desgn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Corporator"
+                                android:textColor="@color/Gray"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_work_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="7dp"
+                                android:text="@string/work_content"
+                                android:visibility="gone" />
+
+                            <com.tmall.ultraviewpager.UltraViewPager
+                                android:id="@+id/ultra_photo_vp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </LinearLayout>
+                    </LinearLayout>&ndash;&gt;
+
+                </LinearLayout>-->
+            </android.support.v7.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_pol_ad"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_feature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:text="FEATURES"
+                    android:textColor="@color/Black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:weightSum="0.9">
+
+                    <!--Services Card View Layout-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_services"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="0.3"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/iv_services"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_services"
+                                android:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="bottom"
+                                android:gravity="center"
+                                android:text="Services For You"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--Shop - Stores Card View Layout-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_shops"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="0.3"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_stores"
+                                android:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="bottom"
+                                android:gravity="center"
+                                android:text="Shops - Stores"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--Profession Card View Layout-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_profession"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="0.3"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/iv_profession"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_profession"
+                                android:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:gravity="center"
+                                android:text="Profession"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_pol_ad"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/lbl_features"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:text="FEATURES"
+                    android:textColor="@color/Black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:weightSum="0.9">
+
+                    <Button
+                        android:id="@+id/btn_services"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/features_btn_one_bg"
+                        android:text="Services For You"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn_shops"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/features_btn_three_bg"
+                        android:text="Shops &amp;\nStores"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn_profession"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/features_btn_two_bg"
+                        android:text="Profession"
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/card_pol_ad"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/lbl_feature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@color/white"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:text="FEATURES"
-            android:textColor="@color/Black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:weightSum="0.9">
-
-            <!--Services Card View Layout-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_services"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:layout_weight="0.3"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="3dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_services"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_services"
-                        android:tint="@color/colorAccent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="bottom"
-                        android:gravity="center"
-                        android:text="Services For You"
-                        android:textSize="13sp"
-                        android:textColor="@color/colorAccent" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Shop - Stores Card View Layout-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_shops"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:layout_weight="0.3"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="3dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_stores"
-                        android:tint="@color/colorAccent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="bottom"
-                        android:gravity="center"
-                        android:text="Shops - Stores"
-                        android:textSize="13sp"
-                        android:textColor="@color/colorAccent" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Profession Card View Layout-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_profession"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:layout_weight="0.3"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="3dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_profession"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_profession"
-                        android:tint="@color/colorAccent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Profession"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="13sp"/>
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/card_pol_ad"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/lbl_features"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:text="FEATURES"
-            android:textColor="@color/Black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:weightSum="0.9">
-
-            <Button
-                android:id="@+id/btn_services"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.3"
-                android:background="@drawable/features_btn_one_bg"
-                android:text="Services For You"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/btn_shops"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.3"
-                android:background="@drawable/features_btn_three_bg"
-                android:text="Shops &amp;\nStores"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/btn_profession"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:background="@drawable/features_btn_two_bg"
-                android:text="Profession"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/card_pol_ad"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar_home"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabMode="fixed" />
-
-        <FrameLayout
-            android:id="@+id/wrapper_ntb_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <devlight.io.library.ntb.NavigationTabBar
-                android:id="@+id/ntb_horizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:ntb_badge_position="left"
-                app:ntb_badge_title_color="#ffffffff"
-                app:ntb_badge_use_typeface="true"
-                app:ntb_badged="true"
-                app:ntb_bg_color="@color/colorPrimary"
-                app:ntb_scaled="false"
-                app:ntb_title_mode="active"
-                app:ntb_title_size="15sp"
-                app:ntb_titled="true" />
-        </FrameLayout>
+                android:layout_height="match_parent"
+                android:layout_below="@+id/card_pol_ad"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_horizontal_ntb"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    </LinearLayout>
-</RelativeLayout>
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/toolbar_home"
+                    android:background="@color/white"
+                    android:minHeight="?attr/actionBarSize"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/colorAccent"
+                    app:tabMode="fixed" />
+
+                <FrameLayout
+                    android:id="@+id/wrapper_ntb_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <devlight.io.library.ntb.NavigationTabBar
+                        android:id="@+id/ntb_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        app:ntb_badge_position="left"
+                        app:ntb_badge_title_color="#ffffffff"
+                        app:ntb_badge_use_typeface="true"
+                        app:ntb_badged="true"
+                        app:ntb_bg_color="@color/colorPrimary"
+                        app:ntb_scaled="false"
+                        app:ntb_title_mode="active"
+                        app:ntb_title_size="15sp"
+                        app:ntb_titled="true" />
+                </FrameLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_horizontal_ntb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

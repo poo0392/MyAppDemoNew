@@ -3,35 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-<!--Changes done-->
+    <!--Changes done-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
         android:padding="5dp">
+
         <ImageView
             android:id="@+id/holder_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:tint="@color/colorAccent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:tint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/title_txtView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/holder_img"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:textSize="14sp"
-            android:textColor="@color/Black"
-            android:layout_below="@+id/holder_img"
-            android:layout_alignParentBottom="true"
             android:maxLines="2"
-            android:text="Home and Office" />
+            android:text="Home and Office"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFC107</color><!-- #FFEB3B--> <!-- #482880-->
-    <color name="colorPrimaryDark">#455A64</color> <!--#FBC02D--> <!--#512DA8-->
-    <color name="colorAccent">#607D8B</color> <!--#000000-->
+    <color name="colorPrimary">#4c5f6e
+    </color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
+    <color name="colorPrimaryDark">#161c21
+    </color> <!--#FBC02D--> <!--#512DA8--><!--#455A64--><!--#3a3364-->
+    <color name="colorAccent">#3BAFDA
+    </color> <!--#000000--><!--#607D8B--><!--#5cb85c--><!--#67ceeb-->
+    <color name="toobarTextColor">#ffffff</color>
+    <color name="toolbarIconColor">#ffffff</color>
+    <color name="splashIconColor">#ffffff</color>
+
+    <color name="inactiveIconWhite">#CCFFFAF0</color>
+    <color name="black_transparent">#8C000000</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_main">#428bca</color>
@@ -16,12 +25,16 @@
     <color name="btn_logut_bg">#ff6861</color>
     <color name="md_grey_500">#9E9E9E</color>
 
+    <color name="bittersweet_fade">#FC6E51</color>
+    <color name="bittersweet_dark">#E9573F</color>
+
 
     <color name="Ivory">#FFFFF0</color>
     <color name="LightYellow">#FFFFE0</color>
     <color name="Yellow">#FFFF00</color>
     <color name="Snow">#FFFAFA</color>
     <color name="FloralWhite">#FFFAF0</color>
+
     <color name="LemonChiffon">#FFFACD</color>
     <color name="Cornsilk">#FFF8DC</color>
     <color name="Seashell">#FFF5EE</color>
@@ -158,3 +171,26 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
 </resources>
+
+
+    <!--  100% — FF
+      95% — F2
+      90% — E6
+      85% — D9
+      80% — CC
+      75% — BF
+      70% — B3
+      65% — A6
+      60% — 99
+      55% — 8C
+      50% — 80
+      45% — 73
+      40% — 66
+      35% — 59
+      30% — 4D
+      25% — 40
+      20% — 33
+      15% — 26
+      10% — 1A
+      5% — 0D
+      0% — 00-->
