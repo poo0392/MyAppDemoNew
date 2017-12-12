@@ -60,7 +60,7 @@ public class HomeActivity extends AppCompatActivity
         ll_profile.setOnClickListener(this);
         ll_offers.setOnClickListener(this);
         ll_inbox.setOnClickListener(this);
-      //  ll_custom_search.setOnClickListener(this);
+        //  ll_custom_search.setOnClickListener(this);
 
         // perform set on query text listener event
        /* simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -147,7 +147,6 @@ public class HomeActivity extends AppCompatActivity
         setSearchViewMenu(menu);
 
 
-
         return true;
 
     }
@@ -205,7 +204,6 @@ public class HomeActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -242,9 +240,9 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void callProfileFragment() {
-        setActiveLayoutColor(ll_profile,ll_home,ll_offers,ll_notification,ll_inbox);
-        setActiveImageColor(iv_profile, iv_home, iv_offers, iv_notification, iv_inbox);
-        setActiveTextColor(txt_profile, txt_offers, txt_home, txt_notification, txt_inbox);
+        setActiveLayoutColor(ll_profile, ll_home, ll_offers, ll_inbox, ll_notification);
+        setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
+        setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
 
         FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
         propFrag.replace(R.id.content_frame, new ProfileFragment());
@@ -252,9 +250,9 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void callInboxFragment() {
-        setActiveLayoutColor(ll_inbox,ll_profile,ll_home,ll_offers,ll_notification);
+        setActiveLayoutColor(ll_inbox, ll_profile, ll_home, ll_offers, ll_notification);
         setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
-        setActiveTextColor(txt_inbox, txt_profile, txt_offers, txt_home, txt_notification);
+        setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
 
         FragmentTransaction inFrag = getSupportFragmentManager().beginTransaction();
         inFrag.replace(R.id.content_frame, new InboxFragment());
@@ -262,9 +260,9 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void callOffersFragment() {
-        setActiveLayoutColor(ll_offers,ll_profile,ll_home,ll_notification,ll_inbox);
-        setActiveImageColor(iv_offers, iv_profile, iv_home, iv_notification, iv_inbox);
-        setActiveTextColor(txt_offers, txt_home, txt_notification, txt_profile, txt_inbox);
+        setActiveLayoutColor(ll_offers, ll_inbox, ll_home, ll_notification, ll_profile);
+        setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
+        setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
 
         FragmentTransaction offersFrag = getSupportFragmentManager().beginTransaction();
         offersFrag.replace(R.id.content_frame, new OffersFragment());
@@ -272,9 +270,9 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void callNotificationFragment() {
-        setActiveLayoutColor(ll_notification,ll_profile,ll_home,ll_offers,ll_inbox);
-        setActiveImageColor(iv_notification, iv_profile, iv_home, iv_offers, iv_inbox);
-        setActiveTextColor(txt_notification, txt_home, txt_profile, txt_offers, txt_inbox);
+        setActiveLayoutColor(ll_notification, ll_inbox, ll_profile, ll_home, ll_offers);
+        setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
+        setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
 
         FragmentTransaction notifFrag = getSupportFragmentManager().beginTransaction();
         notifFrag.replace(R.id.content_frame, new NotificationFragment());
@@ -282,9 +280,10 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void callHomeFragment() {
-        setActiveLayoutColor(ll_home,ll_profile,ll_offers,ll_notification,ll_inbox);
-        setActiveImageColor(iv_home, iv_profile, iv_offers, iv_notification, iv_inbox);
-        setActiveTextColor(txt_home, txt_notification, txt_profile, txt_offers, txt_inbox);
+        setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
+        setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
+        iv_inbox.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
+        setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.content_frame, new HomeFragment());
@@ -334,19 +333,19 @@ public class HomeActivity extends AppCompatActivity
 
     private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
         activeText.setTextColor(getResources().getColor(R.color.white));
-        inactiveText1.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveText2.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveText3.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveText4.setTextColor(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveText1.setTextColor(getResources().getColor(R.color.inactiveIconColor));
+        inactiveText2.setTextColor(getResources().getColor(R.color.inactiveIconColor));
+        inactiveText3.setTextColor(getResources().getColor(R.color.inactiveIconColor));
+        inactiveText4.setTextColor(getResources().getColor(R.color.inactiveIconColor));
     }
 
     private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
 
         activeImg.setColorFilter(getResources().getColor(R.color.white));
-        inactiveImg1.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveImg2.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveImg3.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
-        inactiveImg4.setColorFilter(getResources().getColor(R.color.inactiveIconWhite));
+        inactiveImg1.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
+        inactiveImg2.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
+        inactiveImg3.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
+        inactiveImg4.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
     }
 
     private void setActiveLayoutColor(LinearLayout activeLayout, LinearLayout inactiveLayout1, LinearLayout inactiveLayout2, LinearLayout inactiveLayout3, LinearLayout inactiveLayout4) {

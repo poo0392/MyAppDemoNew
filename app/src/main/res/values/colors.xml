@@ -10,8 +10,8 @@
     <color name="toolbarIconColor">#ffffff</color>
     <color name="splashIconColor">#ffffff</color>
 
-    <color name="inactiveIconWhite">#CCFFFAF0</color>
-    <color name="black_transparent">#8C000000</color>
+    <color name="inactiveIconColor">#CCFFFAF0</color>
+    <color name="black_transparent">#73000000</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_main">#428bca</color>

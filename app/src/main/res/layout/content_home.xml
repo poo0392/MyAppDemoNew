@@ -7,6 +7,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home">
+
     <LinearLayout
         android:id="@+id/ll_linBase"
         android:layout_width="fill_parent"
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
@@ -49,17 +51,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_camera"
-                    android:tint="@color/Wheat" />
+                    android:src="@drawable/ic_menu_camera" />
+
                 <TextView
                     android:id="@+id/txt_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Home"
-                    android:textColor="@color/Wheat"
                     android:layout_marginTop="2dp"
-                    />
+                    android:text="Home"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!--Inbox Layout-->
@@ -77,16 +77,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_inbox"
-                    android:tint="@color/Wheat" />
+                    android:tint="@color/inactiveIconColor"/>
+
                 <TextView
                     android:id="@+id/txt_inbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Inbox"
-                    android:textColor="@color/Wheat"
                     android:layout_marginTop="2dp"
-                    />
+                    android:text="Inbox"
+                    android:textSize="12sp"
+                    android:textColor="@color/inactiveIconColor"/>
             </LinearLayout>
 
             <!--Offers Layout-->
@@ -103,17 +103,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_share"
-                    android:tint="@color/Wheat" />
+                    android:src="@drawable/ic_menu_share" />
+
                 <TextView
                     android:id="@+id/txt_offers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="offers"
-                    android:textColor="@color/Wheat"
                     android:layout_marginTop="2dp"
-                    />
+                    android:text="offers"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!--Notification/more-->
@@ -132,15 +130,14 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_menu_manage"
                     android:tint="@color/Wheat" />
+
                 <TextView
                     android:id="@+id/txt_notification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Notifications"
-                    android:textColor="@color/Wheat"
                     android:layout_marginTop="2dp"
-                    />
+                    android:text="Notifications"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!--Profile Layout-->
@@ -157,21 +154,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_gallery"
-                    android:tint="@color/Wheat" />
+                    android:src="@drawable/ic_menu_gallery" />
+
                 <TextView
                     android:id="@+id/txt_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Profile"
-                    android:textColor="@color/Wheat"
                     android:layout_marginTop="2dp"
-                    />
-
+                    android:text="Profile"
+                    android:textSize="12sp" />
 
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
