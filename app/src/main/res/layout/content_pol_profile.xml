@@ -2,77 +2,103 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="120dp"
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="68dp"
-            android:fontFamily="sans-serif"
-            android:text="Marian Hart"
-            android:textColor="@android:color/black"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:lines="2"
-            android:text="Director of Project Management at GoldenPhase Solar"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tvEducation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitle"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Syracuse University - New York"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tvAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvEducation"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="Greater San Diego Area . 500"
-            android:textSize="16sp" />
-    </RelativeLayout>
-
-    <include
-        android:id="@+id/photoHeader"
-        layout="@layout/photo_header"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/relativeLayout"
-        app:layout_anchorGravity="top|center" />
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="65dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="68dp"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text="Marian Hart"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:lines="2"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text="Director of Project Management at GoldenPhase Solar"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text="Syracuse University - New York"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEducation"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text="Greater San Diego Area . 500"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/photoHeader"
+            layout="@layout/photo_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/relativeLayout"
+            app:layout_anchorGravity="top|center" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/pol_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabMode="fixed"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pol_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
