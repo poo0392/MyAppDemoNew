@@ -51,9 +51,10 @@ public class BannerWithLoginActivity extends AppCompatActivity implements View.O
         banner_recyclerview.setHasFixedSize(true);
         banner_recyclerview.setItemAnimator(new DefaultItemAnimator());
         mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         banner_recyclerview.setLayoutManager(mLayoutManager);
         addItems();
-        mBannerAdapter = new BannerAdapter(this, mBannerList);
+        mBannerAdapter = new BannerAdapter(this, mBannerList, "Banner");
         banner_recyclerview.setAdapter(mBannerAdapter);
         mBannerAdapter.notifyDataSetChanged();
 

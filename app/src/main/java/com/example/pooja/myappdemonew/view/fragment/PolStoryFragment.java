@@ -39,16 +39,15 @@ public class PolStoryFragment extends Fragment {
         storyRecyclerView = (RecyclerView)view.findViewById(R.id.stories_recyclerview);
         storyRecyclerView.setHasFixedSize(true);
         storyRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new LinearLayoutManager(mContext);
         storyRecyclerView.setLayoutManager(mLayoutManager);
         addItems();
-        mBannerAdapter = new BannerAdapter(mContext, mBannerList);
+        mBannerAdapter = new BannerAdapter(mContext, mBannerList,"Pol Story");
         storyRecyclerView.setAdapter(mBannerAdapter);
         mBannerAdapter.notifyDataSetChanged();
     }
 
     private void addItems() {
-        mBannerList=new ArrayList<>();
         mBannerList = new ArrayList<>();
         mBannerList.add(new BannerListModel(getResources().getDrawable(R.drawable.mall), getResources().getString(R.string.default_text)));
         mBannerList.add(new BannerListModel(getResources().getDrawable(R.drawable.garden), getResources().getString(R.string.default_text)));

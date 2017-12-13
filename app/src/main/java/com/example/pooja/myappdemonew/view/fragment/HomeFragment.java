@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
@@ -58,7 +59,7 @@ public class HomeFragment extends Fragment {
     private EditText edt;
     Toolbar toolbar;
     TabLayout mTabLayout;
-    CardView cv_services,cv_shops,cv_profession;
+    LinearLayout cv_services, cv_shops, cv_profession;
 
 
     @Nullable
@@ -171,11 +172,11 @@ public class HomeFragment extends Fragment {
 
     private void attachViews(View view) {
         iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
-       // tv_content = (TextView) view.findViewById(R.id.tv_work_content);
+        // tv_content = (TextView) view.findViewById(R.id.tv_work_content);
 
-        cv_profession=(CardView)view.findViewById(R.id.cv_profession);
-        cv_shops=(CardView)view.findViewById(R.id.cv_shops);
-        cv_services=(CardView)view.findViewById(R.id.cv_services);
+        cv_profession = (LinearLayout) view.findViewById(R.id.ll_profession);
+        cv_shops = (LinearLayout) view.findViewById(R.id.ll_shop);
+        cv_services = (LinearLayout) view.findViewById(R.id.ll_services);
 
         iv_photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,7 +230,7 @@ public class HomeFragment extends Fragment {
                 .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
         //set the alignment
         offersUtViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-        offersUtViewPager.getIndicator().setMargin(0,0,0,10);
+        offersUtViewPager.getIndicator().setMargin(0, 0, 0, 10);
         //cons
         // truct built-in indicator, and add it to  UltraViewPager
         offersUtViewPager.getIndicator().build();
@@ -240,7 +241,6 @@ public class HomeFragment extends Fragment {
         offersUtViewPager.setAutoScroll(3000);
 
     }
-
 
 
 }

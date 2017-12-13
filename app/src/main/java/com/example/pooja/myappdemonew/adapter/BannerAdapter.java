@@ -2,6 +2,7 @@ package com.example.pooja.myappdemonew.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,11 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     Context mContext;
     List<BannerListModel> mList;
 
-    public BannerAdapter(Context mContext, ArrayList<BannerListModel> mList) {
+    public BannerAdapter(Context mContext, ArrayList<BannerListModel> mList,String from) {
         this.mContext = mContext;
         this.mList = mList;
+        Log.v("BannerAdapter ","List Size "+mList.size());
+        Log.v("BannerAdapter ","from "+from);
     }
 
     @Override
