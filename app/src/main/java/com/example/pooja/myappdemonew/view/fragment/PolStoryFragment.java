@@ -29,14 +29,14 @@ public class PolStoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pol_story, container, false);
+        View view = inflater.inflate(R.layout.fragment_pol_gal_story, container, false);
         mContext=getActivity();
         attachViews(view);
         return view;
     }
 
     private void attachViews(View view) {
-        storyRecyclerView = (RecyclerView)view.findViewById(R.id.stories_recyclerview);
+        storyRecyclerView = (RecyclerView)view.findViewById(R.id.pol_frag_recyclerview);
         storyRecyclerView.setHasFixedSize(true);
         storyRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mLayoutManager = new LinearLayoutManager(mContext);
