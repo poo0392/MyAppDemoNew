@@ -21,8 +21,10 @@
             android:layout_below="@+id/toolbar_home"
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
+            app:tabTextColor="@color/inactiveIconColor"
+            app:tabSelectedTextColor="@color/white"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorAccent"
+            app:tabIndicatorColor="@color/white"
             app:tabMode="fixed" />
 
     <android.support.v4.view.ViewPager

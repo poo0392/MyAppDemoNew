@@ -8,7 +8,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -77,7 +76,7 @@ public class HomeFragment extends Fragment {
         setClickListeners();
         setUltraOffersViewPager(view);
         //setFlycoViewPager(view);
-        setHorizontalNtb(view);
+        //setHorizontalNtb(view);
         setWorksViewPager(view);
 
         return view;
@@ -205,8 +204,8 @@ public class HomeFragment extends Fragment {
     private void setupViewPager(ViewPager ntb_viewpager) {
 
         MyNtbAdapter mAdapter = new MyNtbAdapter(getFragmentManager());
-        mAdapter.addFragment(new ServicesFragment(), "Services For You");
-        mAdapter.addFragment(new ShopStoresFragment(), "Shop-Stores");
+        mAdapter.addFragment(new ServicesFragment(), "Services");
+        mAdapter.addFragment(new ShopStoresFragment(), "Stores");
         mAdapter.addFragment(new ProfessionsFragment(), "Professions");
         // mViewPager.setAdapter(mAdapter);
         ntb_viewpager.setAdapter(mAdapter);
@@ -238,7 +237,8 @@ public class HomeFragment extends Fragment {
         //set an infinite loop
         offersUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        offersUtViewPager.setAutoScroll(3000);
+        offersUtViewPager.setAutoScroll(500);
+
 
     }
 

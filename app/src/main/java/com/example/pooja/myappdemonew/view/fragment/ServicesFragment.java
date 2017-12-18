@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +46,9 @@ public class ServicesFragment extends Fragment {
     private void attachView(View view) {
         mServicesRecycler=(RecyclerView)view.findViewById(R.id.services_recyclerview);
         mServicesRecycler.setHasFixedSize(true);
-        mGrisdLayoutManager=new GridLayoutManager(mContext,3);
-        mServicesRecycler.setLayoutManager(mGrisdLayoutManager);
+     //   mGrisdLayoutManager=new GridLayoutManager(mContext,3);
+
+        mServicesRecycler.setLayoutManager(new LinearLayoutManager(mContext));
 
 
         mServicesList= addListItems();

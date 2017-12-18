@@ -85,7 +85,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_gravity="bottom"
                             android:gravity="center"
-                            android:text="Services For You"
+                            android:text="Services"
                             android:textColor="@color/white"
                             android:textSize="13sp" />
 
@@ -115,7 +115,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_gravity="bottom"
                             android:gravity="center"
-                            android:text="Shops - Stores"
+                            android:text="Stores"
                             android:textColor="@color/white"
                             android:textSize="13sp" />
 
@@ -145,7 +145,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
-                            android:text="Profession"
+                            android:text="Professions"
                             android:textColor="@color/white"
                             android:textSize="13sp" />
 

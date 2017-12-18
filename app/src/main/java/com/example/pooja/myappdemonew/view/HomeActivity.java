@@ -3,6 +3,7 @@ package com.example.pooja.myappdemonew.view;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -42,6 +43,8 @@ public class HomeActivity extends AppCompatActivity
     private SearchView simpleSearchView;
     private RelativeLayout search_layout;
     private Menu myMenu;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +119,8 @@ public class HomeActivity extends AppCompatActivity
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -200,6 +203,11 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.action_profile) {
             return true;
         }
+        else if(id==android.R.id.home){
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.openDrawer(GravityCompat.START);  // OPEN DRAWER
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -232,13 +240,66 @@ public class HomeActivity extends AppCompatActivity
             callProfileFragment();
 
         }
-
+/*//replacing the fragment
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        toggle.syncState();
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        toggle.onConfigurationChanged(newConfig);
+    }
+  /*  public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        Class fragmentClass;
+        switch(menuItem.getItemId()) {
+            case R.id.nav_first_fragment:
+                fragmentClass = FirstFragment.class;
+                break;
+            case R.id.nav_second_fragment:
+                fragmentClass = SecondFragment.class;
+                break;
+            case R.id.nav_third_fragment:
+                fragmentClass = ThirdFragment.class;
+                break;
+            default:
+                fragmentClass = FirstFragment.class;
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        mDrawer.closeDrawers();
+    }
+*/
     private void callProfileFragment() {
         setActiveLayoutColor(ll_profile, ll_home, ll_offers, ll_inbox, ll_notification);
         setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
@@ -354,5 +415,6 @@ public class HomeActivity extends AppCompatActivity
         inactiveLayout2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         inactiveLayout3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         inactiveLayout4.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
     }
 }

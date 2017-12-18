@@ -33,7 +33,7 @@ public class NewFeaturesFragment extends Fragment {
         context = getActivity();
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         setTootlbarTitle("All Categories");
-
+        setHasOptionsMenu(true);
         attachViews(view);
         setClickListeners();
 
@@ -46,6 +46,7 @@ public class NewFeaturesFragment extends Fragment {
 
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mTabLayout.setupWithViewPager(mViewPager);
+      //  mTabLayout.setTabTextColors(ColorStateList.valueOf(context.getResources().getColor(R.color.toobarTextColor)));
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +68,12 @@ public class NewFeaturesFragment extends Fragment {
     private void setupViewPager(ViewPager ntb_viewpager) {
 
         MyNtbAdapter mAdapter = new MyNtbAdapter(getFragmentManager());
-        mAdapter.addFragment(new ServicesFragment(), "Services For You");
-        mAdapter.addFragment(new ShopStoresFragment(), "Shop-Stores");
+        mAdapter.addFragment(new ServicesFragment(), "Services");
+        mAdapter.addFragment(new ShopStoresFragment(), "Stores");
         mAdapter.addFragment(new ProfessionsFragment(), "Professions");
         // mViewPager.setAdapter(mAdapter);
         ntb_viewpager.setAdapter(mAdapter);
     }
+
 
 }

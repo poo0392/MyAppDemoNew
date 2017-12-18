@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:theme="@style/AppTheme.AppBarOverlay"
             app:titleTextAppearance="@style/Toolbar.TitleText"/>
-
+       <!-- android:background="?attr/colorPrimary"-->
         <LinearLayout
             android:id="@+id/ll_custom_search"
             android:layout_width="match_parent"

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4c5f6e
+    <color name="colorPrimary">#D81B60
     </color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
-    <color name="colorPrimaryDark">#161c21
+    <color name="colorPrimaryDark">#000000
     </color> <!--#FBC02D--> <!--#512DA8--><!--#455A64--><!--#3a3364-->
-    <color name="colorAccent">#3BAFDA
+    <color name="colorAccent">#880E4F
     </color> <!--#000000--><!--#607D8B--><!--#5cb85c--><!--#67ceeb-->
     <color name="toobarTextColor">#ffffff</color>
     <color name="toolbarIconColor">#ffffff</color>
@@ -27,6 +27,22 @@
 
     <color name="bittersweet_fade">#FC6E51</color>
     <color name="bittersweet_dark">#E9573F</color>
+
+    <!--Gradient 1-->
+    <color name="grad_color1">#FCE38A</color>
+    <color name="grad_color2">#F38181</color>
+
+    <!--Gradient 2-->
+    <color name="grad_color3">#17EAD9</color>
+    <color name="grad_color4">#6078EA</color>
+
+    <!--Gradient 3-->
+    <color name="grad_color5">#184E68</color>
+    <color name="grad_color6">#57CA85</color>
+
+    <!--Gradient 4-->
+    <color name="grad_color7">#BC0056</color>
+    <color name="grad_color8">#730C62</color>
 
 
     <color name="Ivory">#FFFFF0</color>
