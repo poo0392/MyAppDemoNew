@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#D81B60
+    <color name="colorPrimary">#f05324
     </color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
     <color name="colorPrimaryDark">#000000
     </color> <!--#FBC02D--> <!--#512DA8--><!--#455A64--><!--#3a3364-->
-    <color name="colorAccent">#880E4F
-    </color> <!--#000000--><!--#607D8B--><!--#5cb85c--><!--#67ceeb-->
+    <color name="colorAccent">#4CAF50
+    </color> <!--#000000--><!--#607D8B--><!--#5cb85c--><!--#67ceeb--><!--#fcdf86-->
     <color name="toobarTextColor">#ffffff</color>
     <color name="toolbarIconColor">#ffffff</color>
     <color name="splashIconColor">#ffffff</color>
 
     <color name="inactiveIconColor">#CCFFFAF0</color>
     <color name="black_transparent">#73000000</color>
+
+    <color name="services_view_color">#87F05324</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_main">#428bca</color>
@@ -43,6 +45,10 @@
     <!--Gradient 4-->
     <color name="grad_color7">#BC0056</color>
     <color name="grad_color8">#730C62</color>
+
+    <!--Gradient 5-->
+    <color name="grad_color9">#614fd1</color>
+    <color name="grad_color10">#b167d6</color>
 
 
     <color name="Ivory">#FFFFF0</color>

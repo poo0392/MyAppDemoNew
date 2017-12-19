@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
-import com.example.pooja.myappdemonew.model.ServicesModel;
+import com.example.pooja.myappdemonew.model.FeaturesModel;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
     Context context;
-    ArrayList<ServicesModel> mServicesList;
+    ArrayList<FeaturesModel> mServicesList;
     String[] colors;
 
-    public ServicesAdapter(Context context, ArrayList<ServicesModel> mServicesList) {
+    public ServicesAdapter(Context context, ArrayList<FeaturesModel> mServicesList) {
         this.context = context;
         this.mServicesList = mServicesList;
     }

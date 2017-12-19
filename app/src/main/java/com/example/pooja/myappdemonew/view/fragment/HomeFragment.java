@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
     Toolbar toolbar;
     TabLayout mTabLayout;
     LinearLayout cv_services, cv_shops, cv_profession;
-
+    NewFeaturesFragment fragmentB;
 
     @Nullable
     @Override
@@ -87,7 +87,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+              //  Bundle args = new Bundle();
+              //  args.putString("From", "Profession");
+                fragmentB = NewFeaturesFragment.newInstance("Profession");
+                tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
             }
         });
@@ -95,17 +98,26 @@ public class HomeFragment extends Fragment {
         cv_services.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+               // Bundle args = new Bundle();
+               // args.putString("From", "Services");
+               // fragmentB.setArguments(args);
+                fragmentB = NewFeaturesFragment.newInstance("Services");
+                tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
             }
         });
         cv_shops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-                tx.replace(R.id.content_frame, new NewFeaturesFragment());
+               // Bundle args = new Bundle();
+              //  args.putString("From", "Shops");
+              //  fragmentB.setArguments(args);
+                fragmentB = NewFeaturesFragment.newInstance("Shops");
+                tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
             }
         });
@@ -205,7 +217,7 @@ public class HomeFragment extends Fragment {
 
         MyNtbAdapter mAdapter = new MyNtbAdapter(getFragmentManager());
         mAdapter.addFragment(new ServicesFragment(), "Services");
-        mAdapter.addFragment(new ShopStoresFragment(), "Stores");
+        mAdapter.addFragment(new StoresFragment(), "Stores");
         mAdapter.addFragment(new ProfessionsFragment(), "Professions");
         // mViewPager.setAdapter(mAdapter);
         ntb_viewpager.setAdapter(mAdapter);
@@ -237,7 +249,7 @@ public class HomeFragment extends Fragment {
         //set an infinite loop
         offersUtViewPager.setInfiniteLoop(true);
         //enable auto-scroll mode
-        offersUtViewPager.setAutoScroll(500);
+        offersUtViewPager.setAutoScroll(8000);
 
 
     }

@@ -15,7 +15,7 @@ import com.example.pooja.myappdemonew.R;
  * Created by Zafar.Hussain on 04/12/2017.
  */
 
-public class ProfileFragment extends Fragment {
+public class MyProfileFragment extends Fragment {
     Context mContext;
 
     @Override

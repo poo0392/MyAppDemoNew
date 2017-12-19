@@ -31,7 +31,7 @@ import com.example.pooja.myappdemonew.view.fragment.HomeFragment;
 import com.example.pooja.myappdemonew.view.fragment.InboxFragment;
 import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
 import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
-import com.example.pooja.myappdemonew.view.fragment.ProfileFragment;
+import com.example.pooja.myappdemonew.view.fragment.MyProfileFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -306,7 +306,7 @@ public class HomeActivity extends AppCompatActivity
         setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
 
         FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
-        propFrag.replace(R.id.content_frame, new ProfileFragment());
+        propFrag.replace(R.id.content_frame, new MyProfileFragment());
         propFrag.commit();
     }
 
@@ -343,7 +343,6 @@ public class HomeActivity extends AppCompatActivity
     private void callHomeFragment() {
         setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
         setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
-        iv_inbox.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
         setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
@@ -393,28 +392,28 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
-        activeText.setTextColor(getResources().getColor(R.color.white));
-        inactiveText1.setTextColor(getResources().getColor(R.color.inactiveIconColor));
-        inactiveText2.setTextColor(getResources().getColor(R.color.inactiveIconColor));
-        inactiveText3.setTextColor(getResources().getColor(R.color.inactiveIconColor));
-        inactiveText4.setTextColor(getResources().getColor(R.color.inactiveIconColor));
+        activeText.setTextColor(getResources().getColor(R.color.colorPrimary));
+        inactiveText1.setTextColor(getResources().getColor(R.color.Gray));
+        inactiveText2.setTextColor(getResources().getColor(R.color.Gray));
+        inactiveText3.setTextColor(getResources().getColor(R.color.Gray));
+        inactiveText4.setTextColor(getResources().getColor(R.color.Gray));
     }
 
     private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
 
-        activeImg.setColorFilter(getResources().getColor(R.color.white));
-        inactiveImg1.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
-        inactiveImg2.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
-        inactiveImg3.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
-        inactiveImg4.setColorFilter(getResources().getColor(R.color.inactiveIconColor));
+        activeImg.setColorFilter(getResources().getColor(R.color.colorPrimary));
+        inactiveImg1.setColorFilter(getResources().getColor(R.color.Gray));
+        inactiveImg2.setColorFilter(getResources().getColor(R.color.Gray));
+        inactiveImg3.setColorFilter(getResources().getColor(R.color.Gray));
+        inactiveImg4.setColorFilter(getResources().getColor(R.color.Gray));
     }
 
     private void setActiveLayoutColor(LinearLayout activeLayout, LinearLayout inactiveLayout1, LinearLayout inactiveLayout2, LinearLayout inactiveLayout3, LinearLayout inactiveLayout4) {
-        activeLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+       /* activeLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         inactiveLayout1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         inactiveLayout2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         inactiveLayout3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        inactiveLayout4.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        inactiveLayout4.setBackgroundColor(getResources().getColor(R.color.colorPrimary));*/
 
     }
 }

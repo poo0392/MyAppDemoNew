@@ -23,6 +23,7 @@
             android:minHeight="?attr/actionBarSize"
             app:tabTextColor="@color/inactiveIconColor"
             app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Notification.Title"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/white"
             app:tabMode="fixed" />
