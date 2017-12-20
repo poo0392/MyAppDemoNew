@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_profile"
             android:title="Profile" />
         <item
             android:id="@+id/nav_inbox"
@@ -16,15 +16,15 @@
             android:title="Inbox" />
         <item
             android:id="@+id/nav_offers"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_offers"
             android:title="Offers" />
         <item
             android:id="@+id/nav_notifications"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/notification"
             android:title="Notifications" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_logout"
             android:title="Log Out" />
             </group>
 
@@ -32,15 +32,15 @@
         <menu>
             <item
                 android:id="@+id/nav_services"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_services"
                 android:title="Services for you" />
             <item
                 android:id="@+id/nav_shop_store"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_stores"
                 android:title="Shop Stores" />
             <item
                 android:id="@+id/nav_professional"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_profession"
                 android:title="Professionals" />
         </menu>
     </item>

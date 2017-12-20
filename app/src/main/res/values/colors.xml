@@ -4,7 +4,7 @@
     </color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
     <color name="colorPrimaryDark">#000000
     </color> <!--#FBC02D--> <!--#512DA8--><!--#455A64--><!--#3a3364-->
-    <color name="colorAccent">#4CAF50
+    <color name="colorAccent">#ffffff
     </color> <!--#000000--><!--#607D8B--><!--#5cb85c--><!--#67ceeb--><!--#fcdf86-->
     <color name="toobarTextColor">#ffffff</color>
     <color name="toolbarIconColor">#ffffff</color>
@@ -15,7 +15,7 @@
 
     <color name="services_view_color">#87F05324</color>
 
-    <color name="bg_login">#26ae90</color>
+    <color name="bg_login">#4CAF50</color>
     <color name="bg_main">#428bca</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

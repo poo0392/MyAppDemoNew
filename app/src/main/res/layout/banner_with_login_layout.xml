@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/work"
-                        android:tint="@color/colorAccent"/>
+                        android:tint="@color/colorPrimary"/>
 
                     <TextView
                         android:id="@+id/tv_profile"
@@ -91,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/location"
-                        android:tint="@color/colorAccent"/>
+                        android:tint="@color/colorPrimary"/>
 
                     <TextView
                         android:id="@+id/tv_work_area"
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
                 android:layout_weight=".5"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:padding="10dp"
@@ -147,7 +147,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
-                android:background="@color/colorAccent"
+                android:background="@color/bg_login"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:padding="10dp"

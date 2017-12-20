@@ -109,4 +109,6 @@ public class ServicesFragment extends Fragment {
         mServicesList.add(new FeaturesModel("Emergency",mContext.getResources().getDrawable(R.drawable.ic_health)));
         return mServicesList;
     }
+
+
 }

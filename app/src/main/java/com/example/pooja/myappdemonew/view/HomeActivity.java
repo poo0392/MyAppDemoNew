@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -29,9 +30,9 @@ import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.utils.SessionManager;
 import com.example.pooja.myappdemonew.view.fragment.HomeFragment;
 import com.example.pooja.myappdemonew.view.fragment.InboxFragment;
+import com.example.pooja.myappdemonew.view.fragment.MyProfileFragment;
 import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
 import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
-import com.example.pooja.myappdemonew.view.fragment.MyProfileFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -45,6 +46,7 @@ public class HomeActivity extends AppCompatActivity
     private Menu myMenu;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,8 +204,7 @@ public class HomeActivity extends AppCompatActivity
             return true;
         } else if (id == R.id.action_profile) {
             return true;
-        }
-        else if(id==android.R.id.home){
+        } else if (id == android.R.id.home) {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.openDrawer(GravityCompat.START);  // OPEN DRAWER
             return true;
@@ -220,37 +221,46 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_logout) {
             logoutUser();
         } else if (id == R.id.nav_home) {
-
-            callHomeFragment();
+            fragment = new HomeFragment();
+            //  callHomeFragment();
+            setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
+             setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 
         } else if (id == R.id.nav_notifications) {
-
-            callNotificationFragment();
-
+            fragment = new NotificationFragment();
+            // callNotificationFragment();
+            setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
+            //setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
         } else if (id == R.id.nav_offers) {
-
-            callOffersFragment();
+            fragment = new OffersFragment();
+            // callOffersFragment();
+            setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
+            setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
 
         } else if (id == R.id.nav_inbox) {
-
-            callInboxFragment();
-
+            fragment = new InboxFragment();
+            // callInboxFragment();
+            setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+            setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
         } else if (id == R.id.nav_profile) {
-
-            callProfileFragment();
-
+            fragment = new MyProfileFragment();
+            //callProfileFragment();
+            setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
+            setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
         }
-/*//replacing the fragment
+
+        //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.commit();
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -264,42 +274,43 @@ public class HomeActivity extends AppCompatActivity
         // Pass any configuration change to the drawer toggles
         toggle.onConfigurationChanged(newConfig);
     }
-  /*  public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass;
-        switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
-                fragmentClass = FirstFragment.class;
-                break;
-            case R.id.nav_second_fragment:
-                fragmentClass = SecondFragment.class;
-                break;
-            case R.id.nav_third_fragment:
-                fragmentClass = ThirdFragment.class;
-                break;
-            default:
-                fragmentClass = FirstFragment.class;
-        }
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    /*  public void selectDrawerItem(MenuItem menuItem) {
+          // Create a new fragment and specify the fragment to show based on nav item clicked
+          Fragment fragment = null;
+          Class fragmentClass;
+          switch(menuItem.getItemId()) {
+              case R.id.nav_first_fragment:
+                  fragmentClass = FirstFragment.class;
+                  break;
+              case R.id.nav_second_fragment:
+                  fragmentClass = SecondFragment.class;
+                  break;
+              case R.id.nav_third_fragment:
+                  fragmentClass = ThirdFragment.class;
+                  break;
+              default:
+                  fragmentClass = FirstFragment.class;
+          }
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+          try {
+              fragment = (Fragment) fragmentClass.newInstance();
+          } catch (Exception e) {
+              e.printStackTrace();
+          }
 
-        // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
-        // Set action bar title
-        setTitle(menuItem.getTitle());
-        // Close the navigation drawer
-        mDrawer.closeDrawers();
-    }
-*/
+          // Insert the fragment by replacing any existing fragment
+          FragmentManager fragmentManager = getSupportFragmentManager();
+          fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+          // Highlight the selected item has been done by NavigationView
+          menuItem.setChecked(true);
+          // Set action bar title
+          setTitle(menuItem.getTitle());
+          // Close the navigation drawer
+          mDrawer.closeDrawers();
+      }
+  */
     private void callProfileFragment() {
         setActiveLayoutColor(ll_profile, ll_home, ll_offers, ll_inbox, ll_notification);
         setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
@@ -370,24 +381,49 @@ public class HomeActivity extends AppCompatActivity
            /* case R.id.ll_custom_search:
                 break;*/
             case R.id.ll_notification:
-                callNotificationFragment();
+                // callNotificationFragment();
+                fragment = new NotificationFragment();
+                setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
+                setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
                 break;
 
             case R.id.ll_home:
-                callHomeFragment();
+                // callHomeFragment();
+                fragment = new HomeFragment();
+                setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
+                setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
                 break;
 
             case R.id.ll_offers:
-                callOffersFragment();
+                // callOffersFragment();
+                fragment = new OffersFragment();
+                setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
+                setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
                 break;
 
             case R.id.ll_profile:
-                callProfileFragment();
+                // callProfileFragment();
+                fragment = new MyProfileFragment();
+                setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
+                setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
                 break;
             case R.id.ll_inbox:
-                callInboxFragment();
+                //callInboxFragment();
+                fragment = new InboxFragment();
+                setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+                setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
                 break;
 
+        }
+        try {
+            //replacing the fragment
+            if (fragment != null) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
