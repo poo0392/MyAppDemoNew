@@ -59,22 +59,10 @@ public class ServicesFragment extends Fragment {
             public void onClick(View view, final int position) {
                 int pos = (int) mServicesAdapter.getItemId(position);
                 System.out.println("position on recCLick: " + pos);
-                switch (pos) {
-                    case 0:
-                       /* Intent intent = new Intent(getActivity(), HealthActivity.class);
-                        startActivity(intent);*/
-                        FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
-                        propFrag.replace(R.id.content_frame, new HealthFragment());
-                        propFrag.commit();
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
 
-                }
+                FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
+                propFrag.replace(R.id.content_frame, new HealthFragment());
+                propFrag.commit();
             }
 
             @Override
