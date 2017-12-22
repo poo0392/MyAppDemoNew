@@ -11,18 +11,25 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/iv_item_photo"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
-            android:layout_weight=".3"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_weight=".2"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/iv_item_photo"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".7"
+            android:layout_weight=".8"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -34,11 +41,12 @@
                     android:id="@+id/tv_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
                     android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
                     android:text="Noble Chemist"
+                    android:maxLines="2"
                     android:textColor="@color/Black"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/iv_favorite"
@@ -88,11 +96,11 @@
 
                     <RatingBar
                         android:id="@+id/rating_bar"
+                        style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:isIndicator="true"
                         android:stepSize=".1"
-                        style="?android:attr/ratingBarStyleSmall"
                         android:theme="@style/RatingBarStyle" />
                 </LinearLayout>
 
@@ -108,7 +116,7 @@
                     android:text="View Offers"
                     android:textColor="@color/IndianRed"
                     android:textSize="15sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
