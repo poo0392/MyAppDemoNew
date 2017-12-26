@@ -45,9 +45,10 @@ public class HomeActivity extends AppCompatActivity
     private SearchView simpleSearchView;
     private RelativeLayout search_layout;
     private Menu myMenu;
-    DrawerLayout drawer;
+    protected DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     Fragment fragment;
+    Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -57,7 +58,7 @@ public class HomeActivity extends AppCompatActivity
         setAppToolbar();
         attachViews();
         setListeners();
-        callHomeFragment();
+       //
        // setUpBottomNav();
     }
 
@@ -112,7 +113,7 @@ public class HomeActivity extends AppCompatActivity
     }*/
 
     //aded Listenerss
-    private void setListeners() {
+    public void setListeners() {
         ll_notification.setOnClickListener(this);
         ll_home.setOnClickListener(this);
         ll_profile.setOnClickListener(this);
@@ -136,7 +137,7 @@ public class HomeActivity extends AppCompatActivity
         });*/
     }
 
-    private void attachViews() {
+    public void attachViews() {
 
 
         // Session manager
@@ -172,23 +173,27 @@ public class HomeActivity extends AppCompatActivity
         ll_inbox = (LinearLayout) findViewById(R.id.ll_inbox);
     }
 
-    private void setAppToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    protected void setAppToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        //ActivityCompat.invalidateOptionsMenu(HomeActivity.this);
+    }
+    protected void setToggle() {
+        //setAppToolbar();
+
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        //ActivityCompat.invalidateOptionsMenu(HomeActivity.this);
     }
-
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -212,6 +217,10 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
+    protected void setTootlbarTitle(String title) {
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
+    }
     public void setSearchViewMenu(final Menu menu) {
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
@@ -312,12 +321,12 @@ public class HomeActivity extends AppCompatActivity
             ft.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      //  DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    @Override
+/*    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -329,7 +338,7 @@ public class HomeActivity extends AppCompatActivity
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggles
         toggle.onConfigurationChanged(newConfig);
-    }
+    }*/
 
     /*  public void selectDrawerItem(MenuItem menuItem) {
           // Create a new fragment and specify the fragment to show based on nav item clicked
@@ -407,8 +416,8 @@ public class HomeActivity extends AppCompatActivity
         notifFrag.commit();
     }
 
-    private void callHomeFragment() {
-        setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
+    public void callHomeFragment() {
+      //  setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
         setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
         setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 

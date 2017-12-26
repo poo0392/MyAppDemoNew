@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.pooja.myappdemonew.R;
@@ -18,7 +19,7 @@ import com.example.pooja.myappdemonew.view.HomeActivity;
  * Created by POOJA on 12/11/2017.
  */
 
-public class NewFeaturesFragmentActivity extends BaseActivity {
+public class NewFeaturesFragmentActivity extends HomeActivity {
 
     Toolbar toolbar;
     public ViewPager mViewPager;
@@ -29,20 +30,44 @@ public class NewFeaturesFragmentActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home_features);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.fragment_home_features, null, false);
+        drawer.addView(contentView, 0);
+        //setContentView(R.layout.fragment_home_features);
+        setAppToolbar();
+        // toolbar = (Toolbar) findViewById(R.id.toolbar);
         setTootlbarTitle("All Categories");
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        // getSupportActionBar().setDisplayShowHomeEnabled(true);
+        /*toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
-        });
+        });*/
         // setHasOptionsMenu(true);
         attachViews();
-        setClickListeners();
+        setListeners();
+
+        initializeComp();
+    }
+
+    private void initializeComp() {
+        mViewPager = (ViewPager) findViewById(R.id.vp_categories);
+        setupViewPager(mViewPager);
+
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        mTabLayout.setupWithViewPager(mViewPager);
+        //  mTabLayout.setTabTextColors(ColorStateList.valueOf(context.getResources().getColor(R.color.toobarTextColor)));
+
+       /* if (from.equals("Services")) {
+            mViewPager.setCurrentItem(0);
+        } else if (from.equals("Shops")) {
+            mViewPager.setCurrentItem(1);
+        } else if (from.equals("Profession")) {
+            mViewPager.setCurrentItem(2);
+        }*/
+
     }
 
     // @Override
@@ -63,38 +88,6 @@ public class NewFeaturesFragmentActivity extends BaseActivity {
         return view;
     }*/
 
-
-    private void attachViews() {
-        mViewPager = (ViewPager) findViewById(R.id.vp_categories);
-        setupViewPager(mViewPager);
-
-        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        mTabLayout.setupWithViewPager(mViewPager);
-        //  mTabLayout.setTabTextColors(ColorStateList.valueOf(context.getResources().getColor(R.color.toobarTextColor)));
-
-       /* if (from.equals("Services")) {
-            mViewPager.setCurrentItem(0);
-        } else if (from.equals("Shops")) {
-            mViewPager.setCurrentItem(1);
-        } else if (from.equals("Profession")) {
-            mViewPager.setCurrentItem(2);
-        }*/
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // onBackPressed();
-            }
-        });
-    }
-
-    private void setClickListeners() {
-
-    }
-
-    private void setTootlbarTitle(String title) {
-        toolbar.setTitle(title);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
-    }
 
     private void setupViewPager(ViewPager ntb_viewpager) {
 
@@ -130,7 +123,7 @@ public class NewFeaturesFragmentActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(NewFeaturesFragmentActivity.this, HomeActivity.class);
+        Intent i = new Intent(NewFeaturesFragmentActivity.this, HomeActivity.class);
         startActivity(i);
         finish();
     }

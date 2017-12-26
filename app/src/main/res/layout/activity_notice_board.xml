@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/White"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight=".1" />
+
+<LinearLayout
+    android:id="@+id/ll_listv"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".9"
+    android:background="@color/White"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <!--android:paddingTop="5dp"-->
+
+    </ListView>
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNoInternet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtNoInternet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="No Data Available."
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</LinearLayout>
