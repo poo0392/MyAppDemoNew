@@ -1,24 +1,24 @@
 package com.example.pooja.myappdemonew.view.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
+import com.example.pooja.myappdemonew.view.BaseActivity;
+import com.example.pooja.myappdemonew.view.HomeActivity;
 
 /**
  * Created by POOJA on 12/11/2017.
  */
 
-public class NewFeaturesFragment extends Fragment {
+public class NewFeaturesFragmentActivity extends BaseActivity {
 
     Toolbar toolbar;
     public ViewPager mViewPager;
@@ -26,9 +26,27 @@ public class NewFeaturesFragment extends Fragment {
     String from;
     Context context;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_home_features);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTootlbarTitle("All Categories");
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        // setHasOptionsMenu(true);
+        attachViews();
+        setClickListeners();
+    }
+
+    // @Override
+   /* public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_features, container, false);
         Bundle args = getArguments();
         if (args != null) {
@@ -43,24 +61,24 @@ public class NewFeaturesFragment extends Fragment {
         setClickListeners();
 
         return view;
-    }
+    }*/
 
 
-    private void attachViews(View view) {
-        mViewPager = (ViewPager) view.findViewById(R.id.vp_categories);
+    private void attachViews() {
+        mViewPager = (ViewPager) findViewById(R.id.vp_categories);
         setupViewPager(mViewPager);
 
-        mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         mTabLayout.setupWithViewPager(mViewPager);
         //  mTabLayout.setTabTextColors(ColorStateList.valueOf(context.getResources().getColor(R.color.toobarTextColor)));
 
-        if (from.equals("Services")) {
+       /* if (from.equals("Services")) {
             mViewPager.setCurrentItem(0);
         } else if (from.equals("Shops")) {
             mViewPager.setCurrentItem(1);
         } else if (from.equals("Profession")) {
             mViewPager.setCurrentItem(2);
-        }
+        }*/
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +98,7 @@ public class NewFeaturesFragment extends Fragment {
 
     private void setupViewPager(ViewPager ntb_viewpager) {
 
-        MyNtbAdapter mAdapter = new MyNtbAdapter(getFragmentManager());
+        MyNtbAdapter mAdapter = new MyNtbAdapter(getSupportFragmentManager());
         mAdapter.addFragment(new ServicesFragment(), "Services");
         mAdapter.addFragment(new StoresFragment(), "Stores");
         mAdapter.addFragment(new ProfessionsFragment(), "Professions");
@@ -88,24 +106,32 @@ public class NewFeaturesFragment extends Fragment {
         ntb_viewpager.setAdapter(mAdapter);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        // findViews(view);
-        readBundle(getArguments());
-    }
-
+    /*  @Override
+      public void onResume() {
+          super.onResume();
+          // findViews(view);
+          readBundle(getArguments());
+      }
+  */
     private void readBundle(Bundle bundle) {
         if (bundle != null) {
             from = bundle.getString("from");
         }
     }
 
-    public static NewFeaturesFragment newInstance(String value) {
+   /* public static NewFeaturesFragmentActivity newInstance(String value) {
         Bundle args = new Bundle();
-        NewFeaturesFragment fragment = new NewFeaturesFragment();
+        NewFeaturesFragmentActivity fragment = new NewFeaturesFragmentActivity();
         args.putString("from", value);
         fragment.setArguments(args);
         return fragment;
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(NewFeaturesFragmentActivity.this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
 }

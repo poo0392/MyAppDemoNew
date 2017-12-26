@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     Fragment fragment;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,58 @@ public class HomeActivity extends AppCompatActivity
         attachViews();
         setListeners();
         callHomeFragment();
+       // setUpBottomNav();
     }
+
+   /* private void setUpBottomNav() {
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.notifications:
+                                // callNotificationFragment();
+                                fragment = new NotificationFragment();
+                                setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
+                                setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
+                                break;
+
+                            case R.id.home:
+                                // callHomeFragment();
+                                fragment = new HomeFragment();
+                                setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
+                                setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
+                                break;
+
+                            case R.id.offers:
+                                // callOffersFragment();
+                                fragment = new OffersFragment();
+                                setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
+                                setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
+                                break;
+
+                            case R.id.my_profile:
+                                // callProfileFragment();
+                                fragment = new MyProfileFragment();
+                                setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
+                                setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
+                                break;
+                            case R.id.inbox:
+                                //callInboxFragment();
+                                fragment = new InboxFragment();
+                                setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
+                                setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
+                                break;
+                        }
+                        if (fragment != null) {
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.content_frame, fragment);
+                            ft.commit();
+                        }
+                        return true;
+                    }
+                });
+    }*/
 
     //aded Listenerss
     private void setListeners() {
@@ -84,6 +137,8 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void attachViews() {
+
+
         // Session manager
         session = new SessionManager(getApplicationContext());
 
@@ -91,6 +146,7 @@ public class HomeActivity extends AppCompatActivity
         // search_layout = (RelativeLayout) findViewById(R.id.search_layout);
         //   CharSequence query = simpleSearchView.getQuery();
 
+       // bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -156,7 +212,7 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-    private void setSearchViewMenu(final Menu menu) {
+    public void setSearchViewMenu(final Menu menu) {
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -181,7 +237,7 @@ public class HomeActivity extends AppCompatActivity
         });
     }
 
-    private void setColorFilterMenu(Menu menu) {
+    public void setColorFilterMenu(Menu menu) {
         for (int i = 0; i < menu.size(); i++) {
             Drawable drawable = menu.getItem(i).getIcon();
             if (drawable != null) {
@@ -365,7 +421,7 @@ public class HomeActivity extends AppCompatActivity
      * Logging out the user. Will set isLoggedIn flag to false in shared
      * preferences Clears the user data from sqlite users table
      */
-    private void logoutUser() {
+    public void logoutUser() {
         session.setLogin(false);
 
 
@@ -427,7 +483,7 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    private void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
+    public void setActiveTextColor(TextView activeText, TextView inactiveText1, TextView inactiveText2, TextView inactiveText3, TextView inactiveText4) {
         activeText.setTextColor(getResources().getColor(R.color.colorPrimary));
         inactiveText1.setTextColor(getResources().getColor(R.color.Gray));
         inactiveText2.setTextColor(getResources().getColor(R.color.Gray));
@@ -435,7 +491,7 @@ public class HomeActivity extends AppCompatActivity
         inactiveText4.setTextColor(getResources().getColor(R.color.Gray));
     }
 
-    private void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
+    public void setActiveImageColor(ImageView activeImg, ImageView inactiveImg1, ImageView inactiveImg2, ImageView inactiveImg3, ImageView inactiveImg4) {
 
         activeImg.setColorFilter(getResources().getColor(R.color.colorPrimary));
         inactiveImg1.setColorFilter(getResources().getColor(R.color.Gray));
