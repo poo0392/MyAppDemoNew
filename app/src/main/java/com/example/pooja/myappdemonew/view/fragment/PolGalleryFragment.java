@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
-import com.example.pooja.myappdemonew.adapter.GallerAdapter;
+import com.example.pooja.myappdemonew.adapter.GalleryAdapter;
 import com.example.pooja.myappdemonew.model.PolGalleryModel;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class PolGalleryFragment extends Fragment {
     Context mContext;
     GridLayoutManager mGrisdLayoutManager;
     ArrayList<PolGalleryModel> mGalleryList;
-    GallerAdapter mGalleryAdapter;
+    GalleryAdapter mGalleryAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class PolGalleryFragment extends Fragment {
         mGrisdLayoutManager=new GridLayoutManager(mContext,2);
         galleryRecyclerView.setLayoutManager(mGrisdLayoutManager);
         addItems();
-        mGalleryAdapter = new GallerAdapter(mContext, mGalleryList);
+        mGalleryAdapter = new GalleryAdapter(mContext, mGalleryList);
         galleryRecyclerView.setAdapter(mGalleryAdapter);
         mGalleryAdapter.notifyDataSetChanged();
     }

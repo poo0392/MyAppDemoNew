@@ -16,11 +16,11 @@ import java.util.ArrayList;
  * Created by Zafar.Hussain on 14/12/2017.
  */
 
-public class GallerAdapter extends RecyclerView.Adapter<GallerAdapter.ViewHolder> {
+public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
     Context mContext;
     ArrayList<PolGalleryModel> mGalleryList;
 
-    public GallerAdapter(Context mContext, ArrayList<PolGalleryModel> mGalleryList) {
+    public GalleryAdapter(Context mContext, ArrayList<PolGalleryModel> mGalleryList) {
         this.mContext = mContext;
         this.mGalleryList = mGalleryList;
     }

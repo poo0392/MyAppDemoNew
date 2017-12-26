@@ -144,11 +144,11 @@ public class HealthFragment extends Fragment {
 
     private ArrayList<String> addSubItemList() {
         subItemArrayList = new ArrayList<>();
-        subItemArrayList.add("Ambulance");
-        subItemArrayList.add("Blood Bank");
+        subItemArrayList.add("Doctors & Clinics");
+        subItemArrayList.add("Diagnostic Center");
         subItemArrayList.add("Chemist");
         subItemArrayList.add("Gym");
-        subItemArrayList.add("Hospitals & Clinics");
+        subItemArrayList.add("Sports Clubs");
         return subItemArrayList;
     }
 }

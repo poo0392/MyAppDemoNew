@@ -45,7 +45,7 @@ public class ServicesFragment extends Fragment {
         mServicesRecycler.setHasFixedSize(true);
      //   mGrisdLayoutManager=new GridLayoutManager(mContext,3);
 
-        mServicesRecycler.setLayoutManager(new LinearLayoutManager(mContext));
+        mServicesRecycler.setLayoutManager(new GridLayoutManager(mContext,3));
 
 
         mServicesList= addListItems();
@@ -59,6 +59,8 @@ public class ServicesFragment extends Fragment {
             public void onClick(View view, final int position) {
                 int pos = (int) mServicesAdapter.getItemId(position);
                 System.out.println("position on recCLick: " + pos);
+
+
 
                 FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
                 propFrag.replace(R.id.content_frame, new HealthFragment());
@@ -85,16 +87,16 @@ public class ServicesFragment extends Fragment {
         mServicesList.add(new FeaturesModel("Mahila Udyog",mContext.getResources().getDrawable(R.drawable.ic_health)));
         mServicesList.add(new FeaturesModel("Emergency",mContext.getResources().getDrawable(R.drawable.ic_emergency)));*/
 
-        mServicesList.add(new FeaturesModel("Health",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Home & Office",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Beauty & Fashion",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Finance",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Vehicle",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Children & Beloved",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Function & Party",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Repair",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Mahila Udyog",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Emergency",mContext.getResources().getDrawable(R.drawable.ic_health)));
+        mServicesList.add(new FeaturesModel("Health",mContext.getResources().getDrawable(R.drawable.health)));
+        mServicesList.add(new FeaturesModel("Home & Office",mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Beauty & Lifestyle",mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Finance",mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Vehicle",mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Children & Beloved",mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Functions & Party",mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Repair",mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Mahila Udyog",mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Emergency",mContext.getResources().getDrawable(R.drawable.ic_party)));
         return mServicesList;
     }
 

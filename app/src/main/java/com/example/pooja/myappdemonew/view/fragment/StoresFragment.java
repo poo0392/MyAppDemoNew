@@ -40,15 +40,15 @@ public class StoresFragment extends Fragment {
     }
 
     private void attachView(View view) {
-        mServicesRecycler=(RecyclerView)view.findViewById(R.id.services_recyclerview);
+        mServicesRecycler = (RecyclerView) view.findViewById(R.id.services_recyclerview);
         mServicesRecycler.setHasFixedSize(true);
         //   mGrisdLayoutManager=new GridLayoutManager(mContext,3);
 
-        mServicesRecycler.setLayoutManager(new LinearLayoutManager(mContext));
+        mServicesRecycler.setLayoutManager(new GridLayoutManager(mContext, 3));
 
 
-        mServicesList= addListItems();
-        mServicesAdapter=new ServicesAdapter(mContext,mServicesList);
+        mServicesList = addListItems();
+        mServicesAdapter = new ServicesAdapter(mContext, mServicesList);
         mServicesRecycler.setAdapter(mServicesAdapter);
         mServicesAdapter.notifyDataSetChanged();
 
@@ -84,16 +84,16 @@ public class StoresFragment extends Fragment {
 
     //Added list items
     private ArrayList<FeaturesModel> addListItems() {
-        mServicesList=new ArrayList<>();
-        mServicesList.add(new FeaturesModel("Need for home",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Food & Beverages",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Interior",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Appliances",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Lifestyle",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Collections",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Education",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Wholesellers",mContext.getResources().getDrawable(R.drawable.ic_health)));
-        mServicesList.add(new FeaturesModel("Health",mContext.getResources().getDrawable(R.drawable.ic_health)));
+        mServicesList = new ArrayList<>();
+        mServicesList.add(new FeaturesModel("Need for home", mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Food & Beverages", mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Interior", mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Appliances", mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Lifestyle", mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Collections", mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Education", mContext.getResources().getDrawable(R.drawable.ic_profession)));
+        mServicesList.add(new FeaturesModel("Wholesellers", mContext.getResources().getDrawable(R.drawable.ic_party)));
+        mServicesList.add(new FeaturesModel("Health", mContext.getResources().getDrawable(R.drawable.ic_profession)));
         return mServicesList;
     }
 }

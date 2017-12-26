@@ -13,7 +13,8 @@
     <color name="inactiveIconColor">#CCFFFAF0</color>
     <color name="black_transparent">#73000000</color>
 
-    <color name="services_view_color">#87F05324</color>
+    <color name="profession_view_color">#66F05324</color>
+    <color name="offers_btn_bg">#CCFF0000</color>
 
     <color name="bg_login">#4CAF50</color>
     <color name="bg_main">#428bca</color>
@@ -26,6 +27,8 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
     <color name="md_grey_500">#9E9E9E</color>
+
+    <color name="categories_grid_bg">#40d3d3d3</color>
 
     <color name="bittersweet_fade">#FC6E51</color>
     <color name="bittersweet_dark">#E9573F</color>

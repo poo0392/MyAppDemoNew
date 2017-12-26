@@ -10,7 +10,7 @@
     android:textSize="14sp"
     android:gravity="center"
     android:textColor="@color/Black"
-    android:background="@color/white"
+    android:background="@drawable/round_rect_white"
     android:padding="10dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"

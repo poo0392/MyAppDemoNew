@@ -1,6 +1,7 @@
 package com.example.pooja.myappdemonew.adapter;
 
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.model.FeaturesModel;
+import com.example.pooja.myappdemonew.view.fragment.HealthFragment;
 
 import java.util.ArrayList;
 
@@ -29,7 +31,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_services, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_grid_item, parent, false);
         ViewHolder v = new ViewHolder(view);
         return v;
     }
@@ -63,8 +65,17 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
 
-            itemTitle = (TextView) itemView.findViewById(R.id.title_txtView);
-            itemIcon = (ImageView) itemView.findViewById(R.id.holder_img);
+            itemTitle = (TextView) itemView.findViewById(R.id.tv_item_title);
+            itemIcon = (ImageView) itemView.findViewById(R.id.iv_item_photo);
+
+            /*itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction propFrag = getSupportFragmentManager().beginTransaction();
+                    propFrag.replace(R.id.content_frame, new HealthFragment());
+                    propFrag.commit();
+                }
+            });*/
 
         }
     }

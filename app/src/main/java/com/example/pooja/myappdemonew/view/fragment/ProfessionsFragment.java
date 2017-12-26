@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,10 @@ import android.view.ViewGroup;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.ServicesAdapter;
+import com.example.pooja.myappdemonew.adapter.VerticalListAdapter;
 import com.example.pooja.myappdemonew.model.FeaturesModel;
+import com.example.pooja.myappdemonew.utils.ClickListener;
+import com.example.pooja.myappdemonew.utils.RecyclerTouchListener;
 
 import java.util.ArrayList;
 
@@ -25,7 +29,7 @@ public class ProfessionsFragment extends Fragment {
     private Context mContext;
     private RecyclerView mServicesRecycler;
     private GridLayoutManager mGrisdLayoutManager;
-    private ServicesAdapter mServicesAdapter;
+    private VerticalListAdapter mListAdapter;
     private ArrayList<FeaturesModel> mServicesList;
 
     @Override
@@ -45,9 +49,26 @@ public class ProfessionsFragment extends Fragment {
 
 
         mServicesList = addListItems();
-        mServicesAdapter = new ServicesAdapter(mContext, mServicesList);
-        mServicesRecycler.setAdapter(mServicesAdapter);
-        mServicesAdapter.notifyDataSetChanged();
+        mListAdapter = new VerticalListAdapter(mContext, mServicesList);
+        mServicesRecycler.setAdapter(mListAdapter);
+        mListAdapter.notifyDataSetChanged();
+
+
+        mServicesRecycler.addOnItemTouchListener(new RecyclerTouchListener(mContext, mServicesRecycler, new ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                int pos = (int) mListAdapter.getItemId(position);
+                System.out.println("position on recCLick: " + pos);
+
+                FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
+                propFrag.replace(R.id.content_frame, new HealthFragment());
+                propFrag.commit();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
     }
 
     //Added list items

@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Home"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
 
@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Inbox"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
 
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="offers"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
 
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Notifications"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
 
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Profile"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textColor="@color/colorPrimary"/>
 
             </LinearLayout>

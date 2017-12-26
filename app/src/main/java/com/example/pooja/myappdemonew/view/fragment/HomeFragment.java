@@ -8,6 +8,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -20,9 +22,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.adapter.GridAdapter;
 import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
+import com.example.pooja.myappdemonew.model.FeaturesModel;
 import com.example.pooja.myappdemonew.view.PolitianProfileActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.tmall.ultraviewpager.UltraViewPager;
@@ -60,6 +64,9 @@ public class HomeFragment extends Fragment {
     TabLayout mTabLayout;
     LinearLayout cv_services, cv_shops, cv_profession;
     NewFeaturesFragment fragmentB;
+    RecyclerView free_services_recyclerview;
+    GridAdapter mGridAdapter;
+    ArrayList<FeaturesModel> mGridItemList;
 
     @Nullable
     @Override
@@ -87,8 +94,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-              //  Bundle args = new Bundle();
-              //  args.putString("From", "Profession");
+                //  Bundle args = new Bundle();
+                //  args.putString("From", "Profession");
                 fragmentB = NewFeaturesFragment.newInstance("Profession");
                 tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
@@ -98,11 +105,11 @@ public class HomeFragment extends Fragment {
         cv_services.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
+                // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-               // Bundle args = new Bundle();
-               // args.putString("From", "Services");
-               // fragmentB.setArguments(args);
+                // Bundle args = new Bundle();
+                // args.putString("From", "Services");
+                // fragmentB.setArguments(args);
                 fragmentB = NewFeaturesFragment.newInstance("Services");
                 tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
@@ -111,11 +118,11 @@ public class HomeFragment extends Fragment {
         cv_shops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
+                // NewFeaturesFragment fragmentB = new NewFeaturesFragment ();
                 FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-               // Bundle args = new Bundle();
-              //  args.putString("From", "Shops");
-              //  fragmentB.setArguments(args);
+                // Bundle args = new Bundle();
+                //  args.putString("From", "Shops");
+                //  fragmentB.setArguments(args);
                 fragmentB = NewFeaturesFragment.newInstance("Shops");
                 tx.replace(R.id.content_frame, fragmentB);
                 tx.commit();
@@ -182,6 +189,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void attachViews(View view) {
+        mGridItemList=new ArrayList<>();
+        free_services_recyclerview = (RecyclerView) view.findViewById(R.id.free_services_recyclerview);
         iv_photo = (ImageView) view.findViewById(R.id.iv_photo);
         // tv_content = (TextView) view.findViewById(R.id.tv_work_content);
 
@@ -196,7 +205,29 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        free_services_recyclerview.setHasFixedSize(true);
+        //   mGrisdLayoutManager=new GridLayoutManager(mContext,3);
 
+        free_services_recyclerview.setLayoutManager(new GridLayoutManager(mContext,4));
+
+
+        mGridItemList=addListItems();
+        mGridAdapter=new GridAdapter(mGridItemList,mContext);
+        free_services_recyclerview.setAdapter(mGridAdapter);
+        mGridAdapter.notifyDataSetChanged();
+    }
+
+    private ArrayList<FeaturesModel> addListItems() {
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_profession)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.notification)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_home)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_offers)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_profile)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_party)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_offers)));
+        mGridItemList.add(new FeaturesModel("Govt Schools",getResources().getDrawable(R.drawable.ic_health)));
+
+        return mGridItemList;
     }
 
     private void setWorksViewPager(View view) {
