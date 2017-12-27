@@ -1,3 +1,4 @@
+/*
 package com.example.pooja.myappdemonew.view;
 
 import android.app.Dialog;
@@ -44,9 +45,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+*/
 /**
  * Created by Jitendra Keshari on 5/07/2016...
- */
+ *//*
+
 
 public class ActivityNoticeBoard extends HomeActivity implements View.OnClickListener {
     private static final String TAG = "ActivityNoticeBoard";
@@ -109,22 +112,26 @@ public class ActivityNoticeBoard extends HomeActivity implements View.OnClickLis
 //            ll_listv.setVisibility(View.GONE);
 
            // Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
-        /*}PP
+        */
+/*}PP
         else {
             getFileFromCache();
 
         }
-*/
+*//*
+
 
     }
 
 
     private void getDetailsFromDb() {
-      /*  pd = new PersonalDetails(this);
+      */
+/*  pd = new PersonalDetails(this);
         Bundle bd = new Bundle();
         bd = pd.getMobileNum();
         ls_mobNum = bd.getString(PhpFiles.TAG_MOB_NUM);
-*/
+*//*
+
 
         custID = ((MyApplication) this.getApplication()).getCustId();
     //    Log.v(TAG, "CustId in ActivityNoticeBoardDetails :" + custID);
@@ -207,12 +214,14 @@ public class ActivityNoticeBoard extends HomeActivity implements View.OnClickLis
                 Log.v(this.getClass().getSimpleName(), "Response" + jo_resp);
                 progressDialog.dismiss();
                 copyFileInCache();
-                /*if (jo_resp != null ) {//if(jo_resp.length() < 1){
+                */
+/*if (jo_resp != null ) {//if(jo_resp.length() < 1){
                     copyFileInCache();
                 }else{
                     llNoInternet.setVisibility(View.VISIBLE);
                       ll_listv.setVisibility(View.GONE);
-                }*/
+                }*//*
+
 
 
             }
@@ -337,3 +346,4 @@ public class ActivityNoticeBoard extends HomeActivity implements View.OnClickLis
         }
     }
 }
+*/

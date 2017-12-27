@@ -1,3 +1,4 @@
+/*
 package com.example.pooja.myappdemonew.view;
 
 import android.content.Context;
@@ -40,6 +41,7 @@ import com.cresco.CommunityConnectForJJSConnect.Tables.GroupsANDFamilies;
 import com.cresco.CommunityConnectForJJSConnect.Tables.Join;
 import com.cresco.CommunityConnectForJJSConnect.Tables.Members;
 import com.cresco.CommunityConnectForJJSConnect.Tables.PersonalDetails;
+import com.example.pooja.myappdemonew.R;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 
 import org.apache.http.NameValuePair;
@@ -54,9 +56,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+*/
 /**
  * Created by CRESCO on 04-Jul-16.
- */
+ *//*
+
 public class HomeActivityNew extends AppCompatActivity implements View.OnClickListener, OnItemClickListener {
     Toolbar toolbar;
     CrescoTextView toolbarTextview;
@@ -464,11 +468,13 @@ public class HomeActivityNew extends AppCompatActivity implements View.OnClickLi
                 drawer.closeDrawer(GravityCompat.START);
                 onInviteClicked();
                 break;
-          /*  case R.id.ll_apptour:
+          */
+/*  case R.id.ll_apptour:
                 drawer.closeDrawer(GravityCompat.START);
                 i = new Intent(this, WelcomeNote.class);
                 startActivity(i);
-                break;*/
+                break;*//*
+
             case R.id.ll_notice_board:
                 drawer.closeDrawer(GravityCompat.START);
                 i = new Intent(this, ActivityNoticeBoard.class);
@@ -499,9 +505,11 @@ public class HomeActivityNew extends AppCompatActivity implements View.OnClickLi
             int groupId = 0;
             String address = null, address_1 = null, address_2 = null, address_3 = null, city = null, pincode = null, state = null, country = null, nativePlace = null, landline_no = null;
 
-           /* Bundle b = new Bundle();
+           */
+/* Bundle b = new Bundle();
             b = pd.getMobileNum();
-            ls_mobNum = b.getString(PhpFiles.TAG_MOB_NUM);*/
+            ls_mobNum = b.getString(PhpFiles.TAG_MOB_NUM);*//*
+
            // mPreferenceHelper.addString("mobile_no", ls_mobNum);
             getMobNumFromDb();
          //   Log.v(TAG, "mob_num : " + ls_mobNum);
@@ -731,10 +739,12 @@ public class HomeActivityNew extends AppCompatActivity implements View.OnClickLi
                         Toast.makeText(HomeActivity.this, ls_message, Toast.LENGTH_SHORT).show();
                     }
                     //   Log.v(this.getClass().getSimpleName(), " isAdded " + isAdded);
-               /* } catch (Exception e) {
+               */
+/* } catch (Exception e) {
                     e.printStackTrace();
                     //ls_message = "Unexpected Error!";
-                }*/
+                }*//*
+
                 return null;
             }
 
@@ -764,3 +774,4 @@ public class HomeActivityNew extends AppCompatActivity implements View.OnClickLi
     }
 
 }
+*/

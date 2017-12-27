@@ -1,4 +1,4 @@
-package com.example.pooja.myappdemonew.view.fragment;
+package com.example.pooja.myappdemonew.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,9 @@ import android.view.View;
 
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
-import com.example.pooja.myappdemonew.view.BaseActivity;
-import com.example.pooja.myappdemonew.view.HomeActivity;
+import com.example.pooja.myappdemonew.view.fragment.ProfessionsFragment;
+import com.example.pooja.myappdemonew.view.fragment.ServicesFragment;
+import com.example.pooja.myappdemonew.view.fragment.StoresFragment;
 
 /**
  * Created by POOJA on 12/11/2017.

@@ -1,9 +1,10 @@
 package com.example.pooja.myappdemonew.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentTransaction;
 
 import com.example.pooja.myappdemonew.R;
+import com.example.pooja.myappdemonew.view.fragment.HomeFragment;
 
 public class MainActivity extends HomeActivity {
 
@@ -14,6 +15,10 @@ public class MainActivity extends HomeActivity {
         setAppToolbar();
         attachViews();
         setListeners();
-        callHomeFragment();
+      //  callHomeFragment();
+
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.content_frame, new HomeFragment());
+        tx.commit();
     }
 }

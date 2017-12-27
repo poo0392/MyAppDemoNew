@@ -39,7 +39,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".view.fragment.NewFeaturesFragmentActivity"
+            android:name=".view.NewFeaturesFragmentActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"

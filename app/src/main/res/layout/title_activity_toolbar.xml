@@ -8,59 +8,60 @@
     android:layout_gravity="start"
     android:fitsSystemWindows="true">
 
-    <!--tools:openDrawer="start"-->
+    <!-- &lt;!&ndash;tools:openDrawer="start"&ndash;&gt;
 
-    <!--PoojaP-->
-    <!--Toolbar-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+     &lt;!&ndash;PoojaP&ndash;&gt;
+     &lt;!&ndash;Toolbar&ndash;&gt;
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
 
-        <include
-            layout="@layout/app_bar_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+         <include
+             layout="@layout/app_bar_home"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+     </LinearLayout>
 
-    <!--PoojaP-->
-    <!--Drawer Layout-->
-    <LinearLayout
-        android:id="@+id/ll_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:orientation="vertical">
+     &lt;!&ndash;PoojaP&ndash;&gt;
+     &lt;!&ndash;Drawer Layout&ndash;&gt;
+     <LinearLayout
+         android:id="@+id/ll_vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_gravity="start"
+         android:orientation="vertical">
 
-        <include
-            layout="@layout/nav_header_home"
-            android:layout_width="match_parent"
-            android:layout_height="160dp" />
+         <include
+             layout="@layout/nav_header_home"
+             android:layout_width="match_parent"
+             android:layout_height="160dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#dadddd"
-            android:orientation="vertical">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#dadddd"
+             android:orientation="vertical">
 
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true"
-                android:isScrollContainer="true">
+             <ScrollView
+                 android:layout_width="fill_parent"
+                 android:layout_height="match_parent"
+                 android:fillViewport="true"
+                 android:isScrollContainer="true">
 
-                <!-- android:paddingTop="10dp" android:paddingBottom="10dp"-->
-                <include
-                    layout="@layout/nav_drawer_items"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                 &lt;!&ndash; android:paddingTop="10dp" android:paddingBottom="10dp"&ndash;&gt;
+                 <include
+                     layout="@layout/nav_drawer_items"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent" />
 
-            </ScrollView>
+             </ScrollView>
 
-        </LinearLayout>
-    </LinearLayout>
+         </LinearLayout>
+     </LinearLayout>-->
 </android.support.v4.widget.DrawerLayout>
+
 
 
 

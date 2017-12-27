@@ -3,13 +3,11 @@ package com.example.pooja.myappdemonew.view;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -58,8 +56,8 @@ public class HomeActivity extends AppCompatActivity
         setAppToolbar();
         attachViews();
         setListeners();
-       //
-       // setUpBottomNav();
+        callHomeFragment();
+        // setUpBottomNav();
     }
 
    /* private void setUpBottomNav() {
@@ -147,7 +145,7 @@ public class HomeActivity extends AppCompatActivity
         // search_layout = (RelativeLayout) findViewById(R.id.search_layout);
         //   CharSequence query = simpleSearchView.getQuery();
 
-       // bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+        // bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -183,6 +181,7 @@ public class HomeActivity extends AppCompatActivity
 
         //ActivityCompat.invalidateOptionsMenu(HomeActivity.this);
     }
+
     protected void setToggle() {
         //setAppToolbar();
 
@@ -191,14 +190,20 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
+
     @Override
     public void onBackPressed() {
-
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
         } else {
-            //super.onBackPressed();
-            ActivityCompat.finishAffinity(HomeActivity.this);
+
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                //super.onBackPressed();
+                // ActivityCompat.finishAffinity(HomeActivity.this);
+                this.finish();
+            }
         }
     }
 
@@ -221,6 +226,7 @@ public class HomeActivity extends AppCompatActivity
         toolbar.setTitle(title);
         toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
     }
+
     public void setSearchViewMenu(final Menu menu) {
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
@@ -289,7 +295,7 @@ public class HomeActivity extends AppCompatActivity
             fragment = new HomeFragment();
             //  callHomeFragment();
             setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
-             setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
+            setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 
         } else if (id == R.id.nav_notifications) {
             fragment = new NotificationFragment();
@@ -318,10 +324,11 @@ public class HomeActivity extends AppCompatActivity
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
             ft.commit();
         }
 
-      //  DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //  DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -417,12 +424,13 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void callHomeFragment() {
-      //  setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
+        //  setActiveLayoutColor(ll_home, ll_inbox, ll_profile, ll_offers, ll_notification);
         setActiveImageColor(iv_home, iv_inbox, iv_profile, iv_offers, iv_notification);
         setActiveTextColor(txt_home, txt_inbox, txt_profile, txt_offers, txt_notification);
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.content_frame, new HomeFragment());
+       // tx.addToBackStack(null);
         tx.commit();
     }
 
