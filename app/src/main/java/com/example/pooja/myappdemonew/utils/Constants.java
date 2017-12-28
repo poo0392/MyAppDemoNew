@@ -15,18 +15,8 @@ import android.view.View;
 public class Constants {
 
 
-    //  public static final String UAT="https://cima.hdfcergo.com/DWHIRService/Daruber.asmx";
-  // public static final String UAT="http://10.62.121.189/iMonitor/Service.asmx";
-   // String TAG_URL = UAT;
+
    String WebUrl="http://10.62.121.189";
-
-//    public static final String UAT="https://cima.hdfcergo.com/DWHIRService/Daruber.asmx";
-  //  String TAG_URL = UAT;
-   // String WebUrl="https://cima.hdfcergo.com";
-
-   // public static final String UAT="http://10.62.122.39/DWHWebService/Daruber.asmx";
-   // String TAG_URL = UAT;
-   // String WebUrl="http://10.62.122.39";
 
     //Internet offline msg
     public static String offline_msg = "Internet connection appears to be offline";

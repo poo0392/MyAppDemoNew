@@ -27,6 +27,8 @@ import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
 import com.example.pooja.myappdemonew.adapter.MyPagerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.example.pooja.myappdemonew.model.FeaturesModel;
+import com.example.pooja.myappdemonew.utils.ClickListener;
+import com.example.pooja.myappdemonew.utils.RecyclerTouchListener;
 import com.example.pooja.myappdemonew.view.PolitianProfileActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.tmall.ultraviewpager.UltraViewPager;
@@ -98,10 +100,9 @@ public class HomeFragment extends Fragment {
                 //  args.putString("From", "Profession");
                 fragmentB = NewFeaturesFragment.newInstance("Profession");
                 tx.replace(R.id.content_frame, fragmentB);
-                tx.addToBackStack(null);
+             //   tx.addToBackStack(null);
                 // tx.disallowAddToBackStack();
                 tx.commit();
-
 
                 /*Intent tx= new Intent(getActivity(),NewFeaturesFragmentActivity.class);
                 tx.putExtra("From","Profession");
@@ -119,9 +120,11 @@ public class HomeFragment extends Fragment {
                 // fragmentB.setArguments(args);
                 fragmentB = NewFeaturesFragment.newInstance("Services");
                 tx.replace(R.id.content_frame, fragmentB);
-                tx.addToBackStack(null);
+               // tx.addToBackStack(null);
                 //tx.disallowAddToBackStack();
                 tx.commit();
+
+
 
              /*   Intent tx= new Intent(getActivity(),NewFeaturesFragmentActivity.class);
                 tx.putExtra("From","Services");
@@ -138,13 +141,11 @@ public class HomeFragment extends Fragment {
                 //  fragmentB.setArguments(args);
                 fragmentB = NewFeaturesFragment.newInstance("Shops");
                 tx.replace(R.id.content_frame, fragmentB);
-                tx.addToBackStack(null);
+              //  tx.addToBackStack(null);
                 //  tx.disallowAddToBackStack();
                 tx.commit();
 
-             /*   Intent tx= new Intent(getActivity(),NewFeaturesFragmentActivity.class);
-                tx.putExtra("From","Shops");
-                getActivity().startActivity(tx);*/
+
             }
         });
     }
@@ -225,15 +226,30 @@ public class HomeFragment extends Fragment {
             }
         });
         free_services_recyclerview.setHasFixedSize(true);
-        //   mGrisdLayoutManager=new GridLayoutManager(mContext,3);
-
         free_services_recyclerview.setLayoutManager(new GridLayoutManager(mContext, 4));
-
-
         mGridItemList = addListItems();
         mGridAdapter = new GridAdapter(mGridItemList, mContext);
         free_services_recyclerview.setAdapter(mGridAdapter);
         mGridAdapter.notifyDataSetChanged();
+
+
+
+        free_services_recyclerview.addOnItemTouchListener(new RecyclerTouchListener(mContext, free_services_recyclerview, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                for (int i = 0; i < mGridItemList.size(); i++) {
+                    FragmentTransaction propFrag = getActivity().getSupportFragmentManager().beginTransaction();
+                    propFrag.replace(R.id.content_frame, new FreeServicesFragment());
+                    //  propFrag.addToBackStack(null);
+                    propFrag.commit();
+                }
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     private ArrayList<FeaturesModel> addListItems() {

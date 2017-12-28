@@ -1,12 +1,14 @@
 package com.example.pooja.myappdemonew.model;
 
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by POOJA on 12/5/2017.
  */
 
-public class HealthItemModel {
+public class HealthItemModel implements Parcelable {
     public String itemName;
     public String rating;
     public String address;
@@ -19,6 +21,25 @@ public class HealthItemModel {
         this.address = address;
         this.itemPhoto = itemPhoto;
     }
+
+    protected HealthItemModel(Parcel in) {
+        itemName = in.readString();
+        rating = in.readString();
+        address = in.readString();
+        offers = in.readString();
+    }
+
+    public static final Creator<HealthItemModel> CREATOR = new Creator<HealthItemModel>() {
+        @Override
+        public HealthItemModel createFromParcel(Parcel in) {
+            return new HealthItemModel(in);
+        }
+
+        @Override
+        public HealthItemModel[] newArray(int size) {
+            return new HealthItemModel[size];
+        }
+    };
 
     public String getItemName() {
         return itemName;
@@ -50,5 +71,18 @@ public class HealthItemModel {
 
     public void setItemPhoto(Drawable itemPhoto) {
         this.itemPhoto = itemPhoto;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(itemName);
+        dest.writeString(rating);
+        dest.writeString(address);
+        dest.writeString(offers);
     }
 }

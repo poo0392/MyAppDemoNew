@@ -27,6 +27,8 @@ import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
 
+import static com.example.pooja.myappdemonew.utils.Globals.back_press_screen;
+
 /**
  * Created by Zafar.Hussain on 04/12/2017.
  */
@@ -49,7 +51,7 @@ public class HealthFragment extends Fragment {
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         setTootlbarTitle("Health");
         // setHasOptionsMenu(false);
-
+        back_press_screen=2;
         mContext = getActivity();
         attachView(view);
         setAdsUtViewPager(view);
@@ -150,5 +152,13 @@ public class HealthFragment extends Fragment {
         subItemArrayList.add("Gym");
         subItemArrayList.add("Sports Clubs");
         return subItemArrayList;
+    }
+
+    public static HealthFragment newInstance(ArrayList<HealthItemModel> healthItemArrList) {
+        Bundle args = new Bundle();
+        HealthFragment fragment = new HealthFragment();
+        //args.putBundle("healt items", healthItemArrList);
+        fragment.setArguments(args);
+        return fragment;
     }
 }

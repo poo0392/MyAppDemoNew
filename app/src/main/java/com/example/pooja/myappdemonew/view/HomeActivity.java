@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -30,8 +31,11 @@ import com.example.pooja.myappdemonew.utils.SessionManager;
 import com.example.pooja.myappdemonew.view.fragment.HomeFragment;
 import com.example.pooja.myappdemonew.view.fragment.InboxFragment;
 import com.example.pooja.myappdemonew.view.fragment.MyProfileFragment;
+import com.example.pooja.myappdemonew.view.fragment.NewFeaturesFragment;
 import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
 import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
+
+import static com.example.pooja.myappdemonew.utils.Globals.back_press_screen;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -54,6 +58,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setAppToolbar();
+        setToggle();
         attachViews();
         setListeners();
         callHomeFragment();
@@ -196,13 +201,26 @@ public class HomeActivity extends AppCompatActivity
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
             getSupportFragmentManager().popBackStack();
         } else {
-
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
                 //super.onBackPressed();
-                // ActivityCompat.finishAffinity(HomeActivity.this);
-                this.finish();
+
+
+                if (back_press_screen == 1) {
+                    callHomeFragment();
+                } else if(  back_press_screen==2) {
+                    FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+                    //  Bundle args = new Bundle();
+                    //  args.putString("From", "Profession");
+                    NewFeaturesFragment fragmentB = NewFeaturesFragment.newInstance("Services");
+                    tx.replace(R.id.content_frame, fragmentB);
+                  //  tx.addToBackStack(null);
+                    tx.commit();
+                }else{
+                  //  this.finish();
+                    ActivityCompat.finishAffinity(HomeActivity.this);
+                }
             }
         }
     }
@@ -302,22 +320,25 @@ public class HomeActivity extends AppCompatActivity
             // callNotificationFragment();
             setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
             //setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
+            back_press_screen = 1;
         } else if (id == R.id.nav_offers) {
             fragment = new OffersFragment();
             // callOffersFragment();
             setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
             setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
-
+            back_press_screen = 1;
         } else if (id == R.id.nav_inbox) {
             fragment = new InboxFragment();
             // callInboxFragment();
             setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
             setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
+            back_press_screen = 1;
         } else if (id == R.id.nav_profile) {
             fragment = new MyProfileFragment();
             //callProfileFragment();
             setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
             setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
+            back_press_screen = 1;
         }
 
         //replacing the fragment
@@ -430,7 +451,7 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.content_frame, new HomeFragment());
-       // tx.addToBackStack(null);
+        // tx.addToBackStack(null);
         tx.commit();
     }
 
@@ -458,6 +479,7 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new NotificationFragment();
                 setActiveImageColor(iv_notification, iv_inbox, iv_profile, iv_home, iv_offers);
                 setActiveTextColor(txt_notification, txt_inbox, txt_profile, txt_home, txt_offers);
+                back_press_screen = 1;
                 break;
 
             case R.id.ll_home:
@@ -472,6 +494,7 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new OffersFragment();
                 setActiveImageColor(iv_offers, iv_inbox, iv_home, iv_notification, iv_profile);
                 setActiveTextColor(txt_offers, txt_inbox, txt_home, txt_notification, txt_profile);
+                back_press_screen = 1;
                 break;
 
             case R.id.ll_profile:
@@ -479,12 +502,14 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new MyProfileFragment();
                 setActiveImageColor(iv_profile, iv_home, iv_offers, iv_inbox, iv_notification);
                 setActiveTextColor(txt_profile, txt_home, txt_offers, txt_inbox, txt_notification);
+                back_press_screen = 1;
                 break;
             case R.id.ll_inbox:
                 //callInboxFragment();
                 fragment = new InboxFragment();
                 setActiveImageColor(iv_inbox, iv_profile, iv_home, iv_offers, iv_notification);
                 setActiveTextColor(txt_inbox, txt_profile, txt_home, txt_offers, txt_notification);
+                back_press_screen = 1;
                 break;
 
         }

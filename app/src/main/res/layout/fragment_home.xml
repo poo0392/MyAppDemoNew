@@ -22,10 +22,6 @@
                 android:id="@+id/card_pol_ad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="4dp"
                 app:cardElevation="3dp">
 
                 <LinearLayout
@@ -92,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_pol_ad"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -107,7 +103,8 @@
                     android:text="FEATURES"
                     android:textColor="@color/Black"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -330,7 +327,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/features_tab"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:background="#ffffff"
                 android:visibility="visible">
 
@@ -361,7 +358,8 @@
                     android:text="FREE SERVICES"
                     android:textColor="@color/Black"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/free_services_recyclerview"

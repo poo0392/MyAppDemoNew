@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import com.example.pooja.myappdemonew.R;
 import com.example.pooja.myappdemonew.adapter.MyNtbAdapter;
 
+import static com.example.pooja.myappdemonew.utils.Globals.back_press_screen;
+
 /**
  * Created by Zafar.Hussain on 27/12/2017.
  */
@@ -31,6 +33,7 @@ public class NewFeaturesFragment extends Fragment {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle("All Categories");
         setHasOptionsMenu(false);
+        back_press_screen=1;
         context = getActivity();
         initializeComp(view);
         return view;
