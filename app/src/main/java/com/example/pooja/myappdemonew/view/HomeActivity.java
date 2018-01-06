@@ -2,10 +2,12 @@ package com.example.pooja.myappdemonew.view;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +17,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +37,12 @@ import com.example.pooja.myappdemonew.view.fragment.MyProfileFragment;
 import com.example.pooja.myappdemonew.view.fragment.NewFeaturesFragment;
 import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
 import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 import static com.example.pooja.myappdemonew.utils.Globals.back_press_screen;
 
@@ -48,6 +57,8 @@ public class HomeActivity extends AppCompatActivity
     private RelativeLayout search_layout;
     private Menu myMenu;
     protected DrawerLayout drawer;
+    private String loginFrom;
+    GoogleApiClient mGoogleApiClient;
     ActionBarDrawerToggle toggle;
     Fragment fragment;
     Toolbar toolbar;
@@ -142,10 +153,25 @@ public class HomeActivity extends AppCompatActivity
 
     public void attachViews() {
 
+        loginFrom = getIntent().getStringExtra("loginFrom");
 
         // Session manager
         session = new SessionManager(getApplicationContext());
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
 
+        // Build a GoogleSignInClient with the options specified by gso.
+        //mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+         mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
         //  simpleSearchView = (SearchView) findViewById(R.id.search_view); // inititate a search view
         // search_layout = (RelativeLayout) findViewById(R.id.search_layout);
         //   CharSequence query = simpleSearchView.getQuery();
@@ -209,16 +235,16 @@ public class HomeActivity extends AppCompatActivity
 
                 if (back_press_screen == 1) {
                     callHomeFragment();
-                } else if(  back_press_screen==2) {
+                } else if (back_press_screen == 2) {
                     FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
                     //  Bundle args = new Bundle();
                     //  args.putString("From", "Profession");
                     NewFeaturesFragment fragmentB = NewFeaturesFragment.newInstance("Services");
                     tx.replace(R.id.content_frame, fragmentB);
-                  //  tx.addToBackStack(null);
+                    //  tx.addToBackStack(null);
                     tx.commit();
-                }else{
-                  //  this.finish();
+                } else {
+                    //  this.finish();
                     ActivityCompat.finishAffinity(HomeActivity.this);
                 }
             }
@@ -308,7 +334,8 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_logout) {
-            logoutUser();
+            //logoutUser();
+            closeAppAction();
         } else if (id == R.id.nav_home) {
             fragment = new HomeFragment();
             //  callHomeFragment();
@@ -459,14 +486,61 @@ public class HomeActivity extends AppCompatActivity
      * Logging out the user. Will set isLoggedIn flag to false in shared
      * preferences Clears the user data from sqlite users table
      */
+
+    private void closeAppAction() {
+//
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogCustom);
+        builder.setTitle("Confirm Please...");
+        builder.setMessage("Do you want to close the app ?");
+        builder.setCancelable(true);
+        builder.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //finishAffinity();
+                        // finish();
+
+                        //for lower api version than 16
+                        // ActivityCompat.finishAffinity(HomeActivity.this);
+                        if (loginFrom == "normal") {
+                            session.setLogin(false);
+
+                            // Launching the login activity
+                            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            session.setLogin(false);
+                            //login thru google
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                                    new ResultCallback<Status>() {
+                                        @Override
+                                        public void onResult(Status status) {
+                                            //  updateUI(false);
+                                            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                        }
+                    }
+                });
+
+        builder.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+    }
+
     public void logoutUser() {
-        session.setLogin(false);
 
-
-        // Launching the login activity
-        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override

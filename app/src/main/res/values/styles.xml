@@ -46,5 +46,11 @@
         <item name="android:maxHeight">18dp</item>
 
     </style>
-
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimary</item>
+      <!--  <item name="android:windowBackground">@android:color/white</item>-->
+        <!-- <item name="android:textColor">@color/colorPrimary</item>
+         <item name="android:typeface">monospace</item>
+         <item name="android:textSize">13sp</item>-->
+    </style>
 </resources>

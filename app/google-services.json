@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "73504622762",
+    "project_id": "mysearchappdeomo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73504622762:android:498429ecb24b923a",
+        "android_client_info": {
+          "package_name": "com.example.pooja.myappdemonew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73504622762-2fp2edish6gi6cmr5h1rua6vkve8lp8t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pooja.myappdemonew",
+            "certificate_hash": "5c7b1c16d211c725fcd0d1b09805203880884af9"
+          }
+        },
+        {
+          "client_id": "73504622762-vcf99n9k9vfib38md71udsj31n6qlag9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBex0vmdBs8jrzl_e6ffvX6M1t7M065yx4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
