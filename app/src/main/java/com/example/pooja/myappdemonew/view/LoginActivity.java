@@ -173,6 +173,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
            // updateUI(true);
             session.setLogin(true);
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.putExtra("ACCOUNT",acct);
             startActivity(intent);
             finish();
             Toast.makeText(getApplicationContext(),

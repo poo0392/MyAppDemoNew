@@ -4,8 +4,11 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -21,6 +24,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,11 +43,15 @@ import com.example.pooja.myappdemonew.view.fragment.NewFeaturesFragment;
 import com.example.pooja.myappdemonew.view.fragment.NotificationFragment;
 import com.example.pooja.myappdemonew.view.fragment.OffersFragment;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.pooja.myappdemonew.utils.Globals.back_press_screen;
 
@@ -51,13 +60,14 @@ public class HomeActivity extends AppCompatActivity
     private SessionManager session;
 
     private LinearLayout ll_home, ll_profile, ll_notification, ll_offers, ll_linBase, ll_inbox, ll_custom_search;
-    private ImageView iv_profile, iv_offers, iv_notification, iv_home, iv_inbox;
-    private TextView txt_home, txt_profile, txt_notification, txt_offers, txt_inbox;
+    private ImageView iv_profile, iv_offers, iv_notification, iv_home, iv_inbox, photo_imageView;
+    CircleImageView profile_image;
+    private TextView txt_home, txt_profile, txt_notification, txt_offers, txt_inbox, txt_name, txt_email;
     private SearchView simpleSearchView;
     private RelativeLayout search_layout;
     private Menu myMenu;
     protected DrawerLayout drawer;
-    private String loginFrom;
+    private String loginFrom, personName, email,personPhotoUrl;
     GoogleApiClient mGoogleApiClient;
     ActionBarDrawerToggle toggle;
     Fragment fragment;
@@ -155,6 +165,7 @@ public class HomeActivity extends AppCompatActivity
 
         loginFrom = getIntent().getStringExtra("loginFrom");
 
+
         // Session manager
         session = new SessionManager(getApplicationContext());
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -163,7 +174,7 @@ public class HomeActivity extends AppCompatActivity
 
         // Build a GoogleSignInClient with the options specified by gso.
         //mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-         mGoogleApiClient = new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -178,7 +189,13 @@ public class HomeActivity extends AppCompatActivity
 
         // bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
+
+        profile_image = (CircleImageView)header.findViewById(R.id.profile_image);
+        photo_imageView = (ImageView)header.findViewById(R.id.photo_imageView);
+        txt_name = (TextView)header.findViewById(R.id.txt_name);
+        txt_email = (TextView)header.findViewById(R.id.txt_email);
 
         iv_notification = (ImageView) findViewById(R.id.iv_notification);
         iv_offers = (ImageView) findViewById(R.id.iv_offers);
@@ -200,6 +217,37 @@ public class HomeActivity extends AppCompatActivity
         ll_profile = (LinearLayout) findViewById(R.id.ll_profile);
         ll_notification = (LinearLayout) findViewById(R.id.ll_notification);
         ll_inbox = (LinearLayout) findViewById(R.id.ll_inbox);
+        try {
+            GoogleSignInAccount account = getIntent().getParcelableExtra("ACCOUNT");
+
+            personName = account.getDisplayName();
+            personPhotoUrl = account.getPhotoUrl().toString();
+            email = account.getEmail();
+
+
+            Log.e("getIntent ", "Name: " + personName + ", email: " + email
+                    + ", Image: " + personPhotoUrl);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        txt_name.setText(personName);
+        txt_email.setText(email);
+        Picasso.with(HomeActivity.this).load(personPhotoUrl).into(profile_image);
+
+       /* byte[] decodedString = Base64.decode(personPhotoUrl, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        System.out.println("bitmap get image:=>" + decodedByte);
+        try {
+            if (decodedByte == null || decodedByte.equals("")) {
+                photo_imageView.setImageResource(android.R.drawable.sym_def_app_icon);
+            } else {
+                photo_imageView.setImageBitmap(decodedByte);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 
     protected void setAppToolbar() {
