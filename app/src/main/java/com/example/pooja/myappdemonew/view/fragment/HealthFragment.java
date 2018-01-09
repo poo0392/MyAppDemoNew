@@ -1,6 +1,7 @@
 package com.example.pooja.myappdemonew.view.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,8 @@ import com.example.pooja.myappdemonew.adapter.HealthItemRecyclerAdapter;
 import com.example.pooja.myappdemonew.adapter.HealthSubItemRecyclerAdapter;
 import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.example.pooja.myappdemonew.model.HealthItemModel;
+import com.example.pooja.myappdemonew.utils.ClickListener;
+import com.example.pooja.myappdemonew.utils.RecyclerTouchListener;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
@@ -55,8 +58,25 @@ public class HealthFragment extends Fragment {
         mContext = getActivity();
         attachView(view);
         setAdsUtViewPager(view);
+        setListeners();
         return view;
     }
+
+    private void setListeners() {
+        healthItemRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(mContext, healthItemRecyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent i = new Intent(mContext,ItemDetailActivity.class);
+                mContext.startActivity(i);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+    }
+
     private void setTootlbarTitle(String title) {
         toolbar.setTitle(title);
         toolbar.setTitleTextColor(getResources().getColor(R.color.toobarTextColor));
