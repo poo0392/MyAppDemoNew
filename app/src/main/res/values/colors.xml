@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f05324
-    </color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
+    <color name="colorPrimary">#f05324</color><!-- #FFEB3B--> <!-- #482880--><!--#FFC107--><!--#6156a8-->
     <color name="colorPrimaryDark">#000000
     </color> <!--#FBC02D--> <!--#512DA8--><!--#455A64--><!--#3a3364-->
     <color name="colorAccent">#ffffff
@@ -27,6 +26,7 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
     <color name="md_grey_500">#9E9E9E</color>
+    <color name="login_view_color">#80808080</color>
 
     <color name="categories_grid_bg">#40d3d3d3</color>
 

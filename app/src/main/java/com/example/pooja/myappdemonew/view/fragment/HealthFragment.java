@@ -26,6 +26,7 @@ import com.example.pooja.myappdemonew.adapter.UltraPagerAdapter;
 import com.example.pooja.myappdemonew.model.HealthItemModel;
 import com.example.pooja.myappdemonew.utils.ClickListener;
 import com.example.pooja.myappdemonew.utils.RecyclerTouchListener;
+import com.example.pooja.myappdemonew.view.ItemDetailActivity;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
@@ -68,6 +69,8 @@ public class HealthFragment extends Fragment {
             public void onClick(View view, int position) {
                 Intent i = new Intent(mContext,ItemDetailActivity.class);
                 mContext.startActivity(i);
+
+
             }
 
             @Override
@@ -149,6 +152,9 @@ public class HealthFragment extends Fragment {
         mHealthItemAdapter = new HealthItemRecyclerAdapter(mContext, healthItemArrList);
         healthItemRecyclerView.setAdapter(mHealthItemAdapter);
         mHealthItemAdapter.notifyDataSetChanged();
+
+
+
     }
 
     private ArrayList<HealthItemModel> addHealthItemList() {

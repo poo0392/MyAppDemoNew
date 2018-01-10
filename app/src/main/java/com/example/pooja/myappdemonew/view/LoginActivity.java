@@ -19,7 +19,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener {
 
@@ -38,6 +37,15 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
         // Session manager
         session = new SessionManager(getApplicationContext());
         // Check if user is already logged in or not
+        checkSessionForLogin();
+        configureGoogleLogin();
+        attachViews();
+        setListeners();
+
+    }
+
+    private void checkSessionForLogin() {
+
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -45,10 +53,6 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
             startActivity(intent);
             finish();
         }
-        configureGoogleLogin();
-        attachViews();
-        setListeners();
-
     }
 
     private void configureGoogleLogin() {
@@ -68,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
         // Customizing G+ button
         btnSignIn.setSize(SignInButton.SIZE_STANDARD);
         btnSignIn.setScopes(gso.getScopeArray());
+       // btnSignIn.setColorScheme(SignInButton.COLOR_DARK);
     }
 
     private void setListeners() {
