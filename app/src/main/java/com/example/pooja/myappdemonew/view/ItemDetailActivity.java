@@ -34,7 +34,7 @@ public class ItemDetailActivity extends AppCompatActivity{
     }
 
     private void setListeners() {
-        appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        /*appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
 
@@ -51,7 +51,7 @@ public class ItemDetailActivity extends AppCompatActivity{
                     isShow = false;
                 }
             }
-        });
+        });*/
     }
 
     private void attachView() {

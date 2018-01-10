@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true">
+    <!--files not added, changes -->
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
